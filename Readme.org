@@ -267,3 +267,276 @@ nem oldható meg. Urban canyon, erdő nem mindig!
 ** Kérdés
 Nem volt. Úgy kezdjük a félévet, hogy ne legyen gond.
 
+* Idei anyag
+
+** Fotogammetriai munkafolyamat
+
+kb. 180 éves múlt
+
+19. század elején daguerre-lips eljárás 1839?
+Azért ez, mert a párizsi akadémia megvette és
+ingyen elérhetővé tette. Dagerrotipia magyarul
+megjlent 1840-es évek elején magyarok is.
+
+19. század végén az elve. Meiderbaur cikke.
+Újsághy Zsigmond erdőmérnök hallgató.
+
+Elsősorban mennyiségi információ objektum mérete.
+
+** ASPRS
+1980-as def.
+
+tárgyakról és környezetről megbízható információ
+előállítás művészete, tudománya. fényképek és más
+elektroágneses sugárzás készítés mérés és értelmezés
+
+Fotointerpretáció a következő félévben.
+
+art science technology, de alapvetően tudomány.
+Művészi oldal az építészeti fotogammetria.
+
+** Csoportosítás
+Ismételtük
+
+** Analóg fotogammetria
+első félévben volt
+
+Egy képes műszerek képtranszformátorok.
+Sík, képtarszformátor SEG, LUZ átrajzoló
+
+két képes a benti KERN pg műszer, Vild műszerei
+
+Multiplex több képes vetítő
+
+** Analitikus fotogammetria
+mono és sztereokomparaátor
+
+** Digitális fotogammetria
+Elsődleges és másodlagos.
+
+Másodlagos meglévő eljárással Elsődleges, digitális mérőkamerával.
+
+Digitáilis képek és fotogammetriai szoftver és speciális
+hardver eszköz.
+
+Fotogammetriai szoftver, ami munkafolyamatot biztosítja.
+Kép tájékozás és kiértékelés
+
+Speciális hardverek 3D megjelenítők. Sztereo monitorok,
+3D egér. Z kerék, amivel mérőjel magasságát állíthatjuk.
+
+** Jelenlegi 
+Leica RC30 (Wild RC-20)
+
+Z/I imagink RMK (Zeiss RMK Top)
+
+HM Zrínyi videója. Utolsó misszió. Lezárult korszak.
+Ma már analóg kamerával nem dolgozik senki.
+
+Analóg mérőkamerák jellemzői nem részleteztük.
+
+** Fotogammetriai szkennerek
+- Leica Geosystem
+
+Mi a különbség?
+Nem a felbontás, hanem a geometriai pontosság.
+
+Asztali 3600 dpi sem ritka
+
+25.4/3600
+[1] 0.007055556
+
+7 mikront általában tudja egy jobb szkenner.
+
+Fontos a geometriai pontosság. 2 kép egymás után kivonjuk
+Nagyon durva (10 pixeles eltérés is lehet), ahogy húzza.
+
+Fotogammetria 10 um mellett 2 um RMSE!!!!
+
+Méret Nagy méretet keeli
+
+FÖMI DLA Leica Geosytem DSW 700
+
+Kamerát mozgat a film előtt több képet csinál, abból
+teszi össze!
+
+Vexcel Imaging UltraScan = több érzékelőből ez is!
+
+
+Z/I Imagin Phot can HM Zrínyi archívum digitális.
+30*30-as filmek nem fért be.
+
+Vehrli RasterMaster ezt is tudja.
+
+Ingyen kapcsolatokon kapták, angliából jött.
+Egy idő után nem kellenek. Teljes értéket kap a digitalizáltság.
+
+Geometriai pontosság a legfontosabb a megfelelő
+képméret mellett.
+
+Vexcel UltraCamD
+Vexcel UltraScan
+
+Gráci professzor dogozta ki az eljárást.
+9 kis szenzor előállítása töredék költség. tömeggyártásból
+készült fullframe szenzorok!
+
+Rögtön piacvezető.
+
+** Megvan a digitális kép
+Szoftver tudja a belső és külső tájékozást
+relatív és abszolút
+
+Kimenet ortofotók, ortofotó mozaikok. Térbeli
+méréseket végezni a képpárokon. Kéegyeztetésekből
+automatikusan pontfelhőt állítunk elő.
+
+Térbeli mérések, ortofotó a számítás technika fejlődése
+Ma már feldolgozás Imaga Matching automatikus képegyeztetés
+és pontfelhő előállítása.
+
+TRUE orto, pontfelhőn mérhetünk. Élek keresése pl. épület.
+
+** Belső tájékozás
+minimum 3 paraméter (c, F'(\ksi_0, \eta_0))
+
+TopoxMap ablaka.
+
+Keretjelek megmérése. Digitális fotogammetriai szoftverekben
+a keretjel mérése automatizálható.
+
+Korszerűbb kameránál a keretjel kódolt.
+
+Sok szkenner szkenneléskor detektálja a keretjelet.
+Ki tudja a fájl mellé tenni a keretjel koordinátáját!
+
+Másodlagos képeknél a keretjelek megmérése jól automatizálható.
+
+Agisoft PhotoScan
+Kamera állandó, kalbrációs paraméterek.
+
+** Relatív tájékozás
+Kölcsönös tájékozás
+
+5 paraméter több minden is lehet.
+
+x iárnyú bázis rögítve. Jobb képet tologatom. forgatom.
+
+Bal képet rögítem, nem kell továbbmenetnél mozgatni. Nem
+kell elrontani a képpárokat. Korábban a
+kivetített 5 paraméter
+
+b_x válsztott, b_y, b_z, \phi_2, \omega_2, \kappa_2
+
+*** Csak szögekkel
+\phi_1, (\omega_1), \kappa_1, \phi_2, \omega_2, \kappa_2
+
+*** Realív
+Grube pontok
+
+Koplanaritás kapcsolópontok egy síkon.
+
+Ma már jól automatizált. Gyorsítani lehet, ha egy-két
+paramétert meghatározunk, akkor csak finomítunk.
+
+Jó kezdeti paraméterekkel gyorsabb.
+
+5, de
+Gyakorlatilag minimum 6 pont!
+
+**** Képegyeztetés
+Ma ez is már fontos lehet.
+
+*** Abszolút tájékozás
+6 paraméter X_0, Y_0, Z_0, \phi_0, \omega_0, \kappa_0
+
+Jellemzően, ha vannak elérhető direkt tájékozás,
+de indirekt úton pontosítjuk.
+
+Direkt a kép készítésekor határozzuk meg a hat
+
+GNSS X_0, Y_0, Z_0,
+IMU/INS: \phi_0, \omega_0, \kappa_0
+
+90-es évektől már van direkt információ. Manapság is
+indirekt úton pontosítunk. Illesztő pontokk
+IP, GPC (ground control points) kollinearitás elvével
+történik.
+
+Kollinearitás illesztőpont, illesztőpont képe és vetítési középpont.
+
+3 egymást megsző egyenes. metszés, vetítési középpont és
+forgatási szögek meghatározása.
+
+1 ilelsztőpont két egyenlet, két egyenletekből három pont kell!
+
+Relatív tájékozás után abszoltút tájékozás.
+
+3 illesztőpont a hét paramétert is meghatározhatóvá teszi.
+
+Illesztő pont, mid a képen és a terepen is jól azonosítható!
+
+** Ortofotó előállítása
+Tájékozott fényképből előállítható. Felületet definiálni.
+
+Síkfelólet, homlokzat modellje, borított felszín modell.
+visszavetítjük. több 100 több 1000 képből manapság. Ortofotó
+mozaik.
+
+Ez lehet az egyik kimenet.
+
+** Ortorektifikáció
+Raszter transzformáció. Fordítva haladunk.
+Definiáljuk a kimeneti ortofotónkat. Milyen területre,
+milyen felbontással készíten.
+
+Veszem a pixelt térbeli egyenes a vetítési középponton,
+ak képi pixelt másolom.
+
+Ha nem sík területen, a domborzatmodellre vetítem
+először. Pixelről pixelre a differenciális képátlakítás.
+
+Fontos az újra mintavételezés resampling. Nem biztos, hogy
+egy pixel. Hogyan veszem a több pixelből a mintát?
+
+Milyen modellre? Ha DDM-re klasszikus, ha BFM, akkor true
+ortofotó.
+
+** Térbeli mérések
+Manuális sztereofotogammetriai munkaállomáson. Térmodellen
+irányzott pont, CAD szerű szoftveren rajzolunk (merőlege,
+párhuzamos rajzolás)
+
+Félautomatikus mérések. Több mintent jelent. Cursor-on-surface
+kattintottm, s térmodellre a mérőjelet.
+Bal kattint. Megkeresi a másik képen az epipoláris modell a képpáron.
+
+Azután szabályos rácshálón maga kereste a 3D-t.
+
+Manapság teljesen automatikusan minden pixelnek megkeressük
+a párját. Sűrű pontfelhő ponthalmaz!
+
+** Térbeli kép
+Epipolásir sík a másik képen epipoláris egyenest határoz meg.
+A szakaszon tudjuk ott a pont. Korreláltatjuk a képet,
+megvan a pont.
+
+** Image matching
+Manapság ezek a legfontosabb kimenet.
+
+Többféle van, majd részletesen vesszük.
+Egy pontfelhő áll elő eredményként. Zajos, elszállt
+pontok, kiszűrése. Modellek előállítása
+
+BFM borított felszín modell, DSM digital surface modell.
+
+Ezzel a félév során foglalkozunk.
+
+** Nem képegyeztetés pontfelhő
+Még fogunk foglalkozni lézerszkennerrel.
+Egyéb pontfelhő feldolgozások.
+
+Első ismétlő ZH. CV-sek miatt a harmadik héten.
+18-án kerülne sor.
+
+10 perces valami. Hasonló a beugróhoz.
