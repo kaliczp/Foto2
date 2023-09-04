@@ -1,0 +1,269 @@
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:nil broken-links:nil c:nil creator:nil
+#+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:nil
+#+options: p:nil pri:nil prop:nil stat:t tags:nil tasks:t tex:t
+#+options: timestamp:t title:t toc:t todo:t |:t
+#+title: Fotogammetria 2.
+#+date: 2023
+#+author: Kalicz Péter
+#+language: hu
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 27.1 (Org mode 9.3)
+#+latex_class: article
+#+latex_class_options:
+#+latex_header: \usepackage[margin=1in]{geometry}
+#+latex_header: \usepackage[hungarian]{babel}
+#+latex_header_extra:
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_compiler: pdflatex
+
+* Kezdés
+08:15-től kezdenénk
+
+* Szervezési kérdések
+Péter tavaly véletlenül régit vett fel.
+
+Vizsgával elmaradtak páran. CV-s vizsgát meg kell
+csinálni annak, aki folytatni akarja.
+
+Feladatokkal kapcsolatos elmaradások. 1 héten belül pótolni.
+
+Meher, Evelin, Szendery Gergely. Mi is!
+
+* Anyag
+Az első féléveset folytatjuk. Mindenkinek megvannak
+az alapfogalmak. Érdemes átismételni.
+
+2 db ZH a félév során. Az első a tavalyi anyagról is
+szól. Áttekinteni az alapfogalmakat.
+
+Korrábbi google drivet OneDrivera cseréljük.
+
+* Ismétlés
+** Foglalma
+Fotogammetria. Fényképmérés, mennyiségi információ szerzés
+a tárgyakról objektumokról, fénykép készítés és kiértékelés.
+Képek és objektumok közötti matematikai kapcsolat. Centrális
+vetítés tulajdonságai alapján.
+** Felosztás
+Eszköz: űr, légi, földi, eszközök mozgásban vannak így hordozó
+eszköz alapján
+
+Média: fotográfiai rendszerek, digitális érzékelővel.
+Analóg és digitális képek.
+
+Kiértékelés:
+- Analóg :: analóg képekkel, analóg módszerrel optikai, mechanikai eszközök.
+  nem kell számítás. Grafikus kiértékelés
+- Analitikis :: analóg -> digitális. Analóg képekkel, számítással tárgykoordinátákat.
+  Műszeerei a mérő mikroszkópok, vagy komparátorok, képi koordinátát mérünk, meghatározunk.
+- digitális. Digitális -> digitális. Analitikushoz közel. Képi
+  koordináta helyett pixel koordinátákat mérünk, amelyeket képi
+  koordinátává alakítunk. Sok lépést automatizálhatóvá tesz. Korábban
+  rengeteg emberi munka. Ez akár teljesen automatikus munkafolyamta.
+
+Milyen koordinátát kapunk:
+Centrális vetítés 1 kép x,y koordináta csak z függvényében.
+Megadott síkra vetítve.
+
+Ha mindhárom koordináta, sztereo fotogammetria. Ma inkább
+több képes fotogammetria. Ma ez a jellemző.
+
+** Centrális vetítés
+Legfontosabb tulajdonságai.
+- Egyenes képe egyenes
+- Hasonlóság kizárólag akkor van, ha a tárgysík és a
+  képsík párhuzamos
+
+
+Alapvető számítások
+Kép méretaránya = képen mért távolság/terepi távolság
+M_k = c / h_0
+
+h_0 = c/M_k
+
+c = M_k * h_0
+
+Gyakorlatban méretarányszám
+M_k = c/ h_0 = 1/A_k
+
+A_k = h_0/c 
+
+Bázis és sortávolság
+
+B = s * (1-p)
+
+A = s * (1-q)
+
+** Fényképezési felvevőrendszer
+Feketedési görbe a filmek esetén. Adott megvilágítás
+hatására a fény hogyan feketedik.
+
+Feketedés logaritmikus. A filmre jutó és átjutó fény aránya.
+Ha mind átjut, akkor nincs 0.
+1/10-ét engedi át = 1
+1/100-át = 2
+1/1000 = 3
+
+Van egy alapfátyol. Nem nulláról indul. Alapfátyol.
+x tengelyen a 
+
+Egy idő után eléri a legnagyobb feketedés, utána lekonyul.
+Egy idő után roncsolja az ezüstöt.
+
+Fontos a meredekség. Keménységgel összefügg. Meredek
+kontrasztos, lapos lágy, nem kontrasztos.
+
+Hol kezd feketedni.
+
+** Mérőkamerák
+Belső tájékozás ismerte. Vetítési középpont és képsík
+egymáshoz való viszonya. Kameraállandó.
+Képsík melyi pontja fölött, alatt.
+
+Képfőpont. Az amelyik a vetítési középpont képsíkra
+eső merőleges vetülete.
+
+Optikai elrajzolás ismerete. Jobb ha külön vesszük a belső
+tájékozástól. Optikai renszer nem teljesen a centrális
+szerint képez. Lyukkamera a tökéletes. Optikán többszörösen
+megtörő fény. Belépő és kilépő sugár szögének különbsége.
+
+Nagy képméret. Pontos méréshez kell. Kiegészítő információ.
+Magasságmérő, óra, libella...
+
+Digitális kameránál az exif adatokban kiegészítő információ.
+
+Exponált filmen a képi koordináta renszer. Keretjelek a kameráknál.
+A fénykép felvételen a képi koordináta renszert határozza
+meg. Rézau háló, illetve keretjelek.
+
+** Digitális mérőképek
+Digitális kép szabályos adatmodell. Pixelek mennyiségi infót
+tartalmaz. Objektum spektrális és radiometriai adataival 
+arányos. Geom, spekt, radio, időbeli felbontás.
+
+Helyigény. pixel, sor, oszlop, radiometriai felbontás
+
+V = ns * n oszlop * sáv * radometriai felbontás.
+
+bit vagy bájt a felbontás Számítógépnél bájt a felbontás.
+
+12 bit is 2 bájton tárolt.
+
+** Digit mérőkam csoportosítása
+Kép szenzorok, sorszenzorok. Ez a két nagy csoport.
+
+** Korszerű digitális mérőkamera
+Vexel ultracam leginkább használatos. Magyar 
+
+ULTRACAM D, X, Xp képszenzoros
+
+Sorszenzoros Leica ADS
+
+** Sztereoszkopikus látás
+3 feltétel 
+
+képpár, tájékozás, képek szétválasztás
+
+Képpár két külön álláspont, de ugyan az az objektum
+parallaxis
+
+tájékozás: zavartalan.
+
+Jobb szem jobb kép
+
+** Szétválasztás
+- térben, tükrös, lencsés
+- időben folyadékkristályos
+- spektrálisan anaglif
+** Normál sztereogram
+Már tájékozott a sztereogram.
+Normál sztereogramnál a bázisra merőleges kameratengellyel
+készülnek a felvételek. Egyszerűbb számítás. Kis szögek
+függvényeivel nem kellett foglalnkozni.
+
+\Delta h = ...
+
+h_0-t érdemes kieelni. Olyan mértékegység ami kell.
+
+\delta p / p' / \delta p 
+
+Egy arány. Nem kell átváltani. Repülési magasság mekkora
+része a magasság.
+** Analóg fotogammetria
+mechanikai vagy optikai eszközökkel állítjuk helyre.
+
+** Analitikus
+Analitikus, mérjük számolunk, mérő
+
+** Digitális
+digitális képek, digitális kiértékelés
+pixel, képi térbeli koord
+
+** Téjékozás
+Belső vetítési sík és kép viszonya
+képfőpont eltolódás és kamera állandó.
+
+Analóg képeknél kell a keretjel is.
+
+Digitális képnél nem kell keretjel.
+
+
+
+** Külső tájék
+Már tájékozott képünk 6 paraméter
+x, y, z, x_0, y_0, z_0, xc, yc, zc
+
+Koordináta tngelyek körüli forgatás
+\omega, \phi, \kappa
+
+
+** Többképes fogo
+Egymáshoz tájékozni. Relatív vagy kölcsönös tájékozás
+Kapcsoló pontok vagy gruber pontok
+
+5 paraméter 6 pont 1 fölös mérés.
+
+1 pont 1 egyenlet. Relatív tájékozásra térmodell jön létre
+objektum lekicsinyített képe.
+
+Térmodell abszolút értelem.
+
+3 koordináta eltolás és három forgatási szög.
+
+Abszolút eltol, beforgat és méretarány összesen 7 parméteres
+transzformáció. Geodéziában sokat használjuk.
+
+1 * 6 
+
+12 összesen.
+
+Relatív 5 sokféle lehet!
+5 szögérték, egy adott egységnyi.
+2 távolság 3 szög
+
+Sokféle fontos. Műszerek hozzá tájékozásnál volt fontos!
+
+** UAV
+pilóta nélküli eszközök.
+Kategóriák
+
+- nyílt open
+- speciális specialised
+- engedélyköteles certified
+
+Nyílt kategóriával foglalkoztunk.
+UAV felmérés a határokat túlléphetjük.
+
+Mit léphetünk túl. Folyamatos eszköz követés. Gyakran
+nem oldható meg. Urban canyon, erdő nem mindig!
+
+120 m korlát is probléma lehet.
+
+** Kérdés
+Nem volt. Úgy kezdjük a félévet, hogy ne legyen gond.
+
