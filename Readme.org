@@ -540,3 +540,187 @@ Első ismétlő ZH. CV-sek miatt a harmadik héten.
 18-án kerülne sor.
 
 10 perces valami. Hasonló a beugróhoz.
+
+* <2023-09-11 h>
+Terem a tavalyival szemben.
+
+** Soproni fényképezés
+
+5 évente lombtalan. 20 cm felbontás 200 km^2
+
+Nap állása >= 25 fok. Március végén tipikusan lombtalan. Tavaszi napforduló után,
+de többség nem lombosodik.
+Tavasszal sokkal jobb megvilágítási viszonyok.
+
+** Belváros
+Nagyobb átfedés, modellezés. Nagyobb felbontás 5cm.
+
+** Tájékozás
+Mindig szükség van indirekt javítsra. Illesztőpont segítségével.
+Van repüléstervező szoftver, ami a légi háromszögelés tervezésénél ad
+javaslatot, hogy hová tegyük az illesztőpontokat.
+
+Kép kék repülési sáv, zöld tervezett illesztőpontok. Tömb sarkaiba illesztő pont.
+Nem a legszéle, hogy 2–3 képen lehessen mérni az illesztőpontokra. Fertő kritikus.
+Nehéz közlekedni és nehéz illesztőpontot mérni.
+
+Illesztőpont: fontos az azonosíthatóság és megközelíthetőség.
+- Előre lejelölt illesztőpont. Repülés előtt lejelölve.
+- Nem jelölünk le. A képanyagon válaszatunk és bemérjük.
+
+Az utólagos illesztőpont bemérésben van kockázat. Az IDŐ!
+Felfestés, amin autó áll. Képanyagot később kapjuk, mire választunk,
+nincs ott az objektum. Időráfordítás kisebb. Előzetes jelölésnél mégsem
+akkor lesz a repülés. Megsemmisül.
+
+Természeti területen nem nagyon van utólagos jelölhető illesztőpont. Fertő, erdő.
+Ekkor érdemes jelölni!
+
+Ha kimegyünk nem egyet, hanem egy csoportban 2–3. Így lesz illesztőpont és kontroll pont is,
+ha már egyszer kimegyünk.
+
+Csatorna fedlap közepe. 20 cm felbontásnál megygyőződni, hogy a képen jól elkülönül-e?
+Képkészítés pillanatában átmegy egy autó. Mindig legyenek tartalék pont!!!!
+
+Csoportos illesztő pontok a belvárosban.
+
+Repülés 2020-03-20
+Cesna gép UltraCam Eagle Mark 2 f100
+100.5 mm fókusz
+1/350 sec 
+Tiszta égbolt.
+
+7 sor
+
+Megvalósulás trakje. Elég kesze-kuszának tűnik. Erős spirállal
+emelkedő repülő. Alacsonyabbra ereszkedés. Tracklog jó a direkt
+tájékozáshoz, ha a képeknek nincs. Van időbélyeg minden pontban.
+Oda tudjuk csatolni a megfelelő pozícióhoz.
+
+GPS időbélyege jó. Kamera órája hogyan van beállítva. Mennyire jól
+szinkronizáltak az egyes berendezések időpontjai? Ez teszi nehézzé
+a direkt tájékozást. GNNS, IMU és kamera.
+
+Fontos a kamera kalibráció.
+
+*** Kamera kalibrációs jegyzőkönyv
+9 kép pánkromatikus és négy multispektrális rész.
+
+Fontos, hogy a kamera kalibrációt korábban laborban végezték goniométer eszközzel.
+Kamera svájcba, Herrbrugg a Wild.
+
+Digitális kamerák gyártás után, de képanyag feldolgozás
+során nem a labor adatokat, gyártó vagy cég terepi kalibrálás. Olyan területen, ahol
+sok objektumot lehet mérni. Digi fotogammetria, digitális képek éles repülés közben
+kalibrál. Nagyobb pontosság, mint labor. Hőmérséklet, fényviszonyok laborban mások lehetnek.
+
+*** Légiháromszögelés
+Nagy tömb légiháromszögelés eredménye.
+Kapcsolópontok. Beljebb a tömbben több kép. Kapcsoló pontok a belsejében maradék eltérések,
+pontossági mérőszám lesz a kamera kalibrációra.
+
+Sopron nem kérte Ágfalva területét.
+
+*** Pufferzóna
+Nagyon fontos, nem lehet élesen meghúzni a határt. Ne maradjon ki terület. Pontosan
+definiálni Korábban kimaradt Balf. A cég nem tudta, hogy Balf is Soproni községhatár.
+Nem jó senkinek a pótlás.
+
+*** Szelvényezés
+EOTR szelvényezés készült. Azon belül 1000 méretarányú szelvényekig lemenően szelvényezve.
+Nagy ortofotó mozaiknál fontos, hogy ne legyen nagy adatállomány! Lehet piramisréteg,
+amit egyben is megfelelően kezelhetünk. Vannak állományok, amelyek a szelvényekből
+virtuális rasztert készítenek.
+
+ER Viewer egybe mozaikolt ortofotó. Megnéztük az illesztőpontot.
+
+Van, hogy automatikus mozaikolás. Vagy a varróvonalak manuálisan is szerkeszthetők.
+Megkeresni, hogy hol lehetett az illesztés. Különböző tónusok, objektumok dőlése is
+fontos információ. Általában lehet látni az illesztéseket. A cég a technológia és az
+alapos munka nagyban eltérő lehet. Odafigyeléssel, ahol kell kézzel belenyúlnak.
+
+Belváros
+
+*** Hisztogram
+Egy lombtalan soha sem egy nyári felvétel dinamikája, de cserében a fák alatt utak,
+épületek (épületkataszterhez). Az árnyékban is látszik nagyjából mi van.
+
+Hagyományos ortofotó. Objektumok a talajszinten vannak a helyükön! DDM-re készül
+az ortofotó! A true orto az újabb. Manapság egyre inkább használják. Egyiknek
+és másiknak is előnye-hátránya. Csak egyik oldal, csak másik oldal.
+
+Valódi ortó (true orto) épületek nem dőlnek sehol.
+
+*** Műszaki dokumentáció
+Feladat adatai. Külső tájékozás, digitális ortofotó.
+Illesztőpontok és mérési jelgyzőkönyv.
+
+Kamera jegyzőkönyv. Digitális kameránál képfőpont eltolódás gyakran 0 & 0!
+
+Kamera kalibráció maradék hibái.
+
+RMS 0.57 um pixel 4.6 um 1/8 pixel a maradék hiba! Maradékeltéréseknek van-e
+szabályos eltolódás. Körgyűrűt látunk benne. Nem megfelelő kalibráció.
+
+Digitális kamera a belső tájékozásnál forgatás izgalmas! 90 fokos forgatásokkal
+meg lehet bonyolítani a forgatással.
+
+Képátvitel. Kép szále felé csökken az élesség.
+
+Szürke értékek különbözőségek a vignettálódás kalibrálására.
+
+Repülésnél KML/KMZ a fájl.
+
+Repülés protokollja a katonáknak leadandó a távérzékelési engedélyhez.
+
+*** Légi háromszögelés
+Trimble Match-AT
+Aerial Triangulation
+
+Ahol nem jól sikerült kiegyenlíteni. Szürke kapcsolópontok. Van ami több mint 8 képen!
+
+Kapcsolópontok maradékhibájának a hisztogramja 0.17 a legtöbbnél.
+
+Sorok vége felé nő az átlagos eltérés!
+
+Direkt és indirekt tájékozás közötti különbségek.
+
+Illesztőpontokon jelentkező eltérések. 0.43 3D vektorban.
+
+Illesztő pontok mellett az ellenőrző pontokról is információ. Ellenőrző pontokon
+nagyobb a hiba, mint az illesztőpontokon. 9, 15, 12 cm!
+
+A városra kisebb hibák, kisebb terület, jobban egyben a tömb!
+
+** Áttekintés
+Sopron megrendeli, de térbeli mérés és teljes térképezést nem rendel meg.
+Belváros 3D modellje sem került átadásra. A lehetőség adott, hogy 10 év
+múlva megfelelően pontos és hiteles méréseket tud végezni!
+
+Minden önkormányzatnak, az önkormányzati térinformatikai
+
+** Szoftver
+Trimble INFOT volt régen az egyik legjobb.
+Szoftverek területén nagy választék, időben is sokat változnak.
+
+Ma már azt mondják képegyeztetés terén van jobb szoftver. Ez már klasszikus!
+Klasszikus nem mindig fejleszt olyan gyorsan.
+
+10 komoly fotogammetriai szoftver van és fontosak a félkomolyak is pl. UAV képeire.
+Félprofiból rengeteg van.
+
+Számítástechnika is változik. Új technika és ahhoz új szoftverek.
+Vannak szenzorhoz kamerához jó szoftverek. Pán és orto kromatkus összedolgozása.
+
+A cégek általában több szoftvert használnak!
+
+Pl LTK is Tr Infóval dolgozik, de gondolkoznak a váltáson.
+
+** Kamerakalibráció
+Ez lenne a következő előadás anyaga.
+
+Jövő órán ZH! Lehet az óra végén írnánk. Szabadabb a vége.
+Az elején előadással, utána 9.30–9.45-ig.
+
+Szerdai gyakorlat. Küld üzenetet, hogy hol lesz.
+
