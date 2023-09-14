@@ -724,3 +724,139 @@ Az elején előadással, utána 9.30–9.45-ig.
 
 Szerdai gyakorlat. Küld üzenetet, hogy hol lesz.
 
+* <2023-09-13 sze>
+
+Óra elején nem voltam. Géza röviden összefoglalta, mi volt
+
+Témavázlat:
+TopoXmappal kezdünk, utána Agisoft, utána pontfelhős dolgok.
+
+Tájékozás panel egy kép tájékozása volt az elején. Valamit egyszerűbb elmagyarázni.
+Tájékozás
+
+0-ban illesztőpontok, magasságot megadták, felemelkedett a modell.
+
+** TopoXmapot nézték
+Egyképes már volt.
+
+
+Tömbkiegyenlítés ablak. Wild RC-20 13033
+
+*** Projekt
+
+*** Kamera
+
+Keretjelek az ábrán kattinthatók.
+
+Előbb próbából, most rendesen írjuk át a koordinátát.
+TopoXmap vesszőt is tud, inkább pontot. Keretjelekben 4 mikrométer a legnagyobb
+14 um a szkennelés. Itt nem jelentősek az eltérések.
+
+NAGYON KELL FIGYELNI a forgatásra.
+
+Vissza menni a Projektre menteni. Ment mindig az aktuálisat írja.
+
+*** Kép
+hozzáadás több 100 kép is.
+Két képet 19 és 20 Shifttel kijelölni
+Fontos, hogy az ecw-t adjuk hozzá!
+A tif jpeg tömörítést alkalmazza. Ezt a jpeg tömörítésű tiffet topoxmap nem támogatja.
+Több lehtőség. irfan view nem tömörített tiff, ecw-be átalakítható.
+fentrol.hu-ról letölthető jpeg tömörítésűek, e miatt van.
+
+*** Keretjel
+Tömbkiegyenlítés modulnál a fenti Kép listában duplakatt. Rendes térképnézet, csak
+minimalizálva van a TOC.
+Keretjelek mért képi koordinátái. Ugyan az az esköz.
+Alaphelyzet négy sarokba teszi. Közelítőleg oda tesszük. Egy körben megvan Nyomkövető nézet
+duplakatt a pontra. Pontosabban meg tudjuk mérni.
+
+A nyomkövetés méretaránya a Projekt ben megállítható Egy adott méretarányban végig megyek,
+utána átállítom. Méretarány a jobb alsó sarokban.
+
+Munka körbe-körbe megyek egyre inkább nagyítva.
+
+Belső tájékozás maradék hibájának egy pixel alatt kell maradnia.
+
+Forgatásokra nagyon kell figyelni. Kamera kalibrációs jegyzőkönyv úgy tartalmazza a kamerát,
+ahogy a kalib jegyzőkönyv. Modern kamera a keretjel számozott.
+
+Fentről.hu képeknél nincs mindig így. Mit kell elforgatni? Sok szabadság. 180 fokkal
+el lenne forgatva, koordinátákat úgy állítom, hogy a megfelelő koordináta, előjellel
+Keretjel megmérésével! Az a legegyszerűbb, ha nem változtatom meg a dolgokat.
+
+Képfőpont eltolódást is át kell előjelezni. Az egész koordináta rendszert át kell forgatni
+a szkennelésnek megfelelően!
+
+Belső tájékozás több kép. Rég 10–100 analóg, digitálisnál 1000 nél több is lehet.
+
+Autoatikus keretjel keresés mehet. Aktív, amin már megmértük.
+
+Képekre katintva tud. váltani. Ment. Meg kell nézni az eredményt.
+Két képnél nincs jelentősége, de sok száznál fontos, hogy jó legyen. Jó szoftver tudja.
+
+Keretjel ablak jobb oldalán lehet átváltani.
+
+Belső tájékozás OK. Paramétert nem tudjuk megtekinteni.
+
+Külső tájékozás első lépése a relatív tájékozás. Kapcsoló vagy Gruber pont.
+
+*** Tervezés nézet
+Kép fülön tervezés nézet. Keletről nyugat felől. Tudom tologatni a tervezésben.
+A kurzor átvált a táékozási nézetbe, akkor kappa szög is állítható.
+
+Forgatás, és Centrum mezőbe szögeket és távolságokat írja. Kezdetleges tájékozás
+kisajtolható. 60% átfedés.
+
+9 kötőpontnak hívja, magyarban kapcsolópontnak hívjuk, nem kötőpont (angol tie pont)
+
+9kötőpont/kép hat kapcsolópontot tesz le az átfedő területen. Nem csak leteszi,
+hanem a képekre.
+
+*** Illesztőpont lista
+Előzetes elrendezés a fenti alapján
+
+Projekt -> Mentés
+
+Méretarány 10000
+
+*** IP mérés
+Dupla katt a kapcsoló ponton.
+
+Először nem pontosan, csak nagyjából a két képen azonosíthatóan ugyan az a pont.
+Azonosítható pontra teszem mindkét képen! Ne mozgassuk el nagyon.
+
+Közelítőleg ugyan oda tenni az összes kapcsolópontot tenni! Fokozatosan növelem
+a méretarányt a projektben. Kapcsolópont, mindkét képen jól tudjam észlelni.
+
+Pár másodperc a képek között. Megengedett az árnyék használata. Inkább a jól felhasználhatót,
+főleg, ha hosszabb idő!
+
+Minél pontosabban azonosítható. Pixel szinten azonosítható!
+
+Erdőterület fölött "h" gombbal hisztogram széthúzás. Jellegzetes facsúcs is lehet.
+Szeles időben mozoghat a facsúcs, de ha nincs más jó is.
+
+Villanyoszlp töve. Foltocska. Városi területen háztetők. Mozgó jármű nem jó!
+Mindkét képen, pontosan tudunk mérni.
+
+Ismétlődő mintázatoknál nagyon figyelni. Növénysorok. Biztos ugyan annak a végét!
+Biztosan ugyan az legyen. Burkolati jel elszámolása!
+
+Méretarány: 10 000 -> 4000 -> 2000 (1000)
+
+Minél jobban azonosítsuk a kapcsolópontot.
+
+Megvannak, ne nagyon mozgassuk el! Próbáljuk a szabályos elrendezést ne megváltoztatni.
+Extrém eset pl. tó, de lehet bólya, uszadék. Geometrialiag nem lesz jó a tájékozásunk.
+
+
+Ma egy képet megnéztünk.
+
+Relatív tájékozás is kész. A modul hiányossága, hogy önmagában a relatív tájékozás
+pontosságát nem látom. Abszolút tájékozás után látjuk mennyire jó.
+
+Egy lépéses kiértékelés. Nem látom külön a relatív tájékozás jóságát.
+
+Jövő héten szerdán valószínűleg nem lesz Géza. Valakit megkér. Másik időpontban
+megtartani. Megy üzenet.
