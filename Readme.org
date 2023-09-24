@@ -860,3 +860,57 @@ Egy lépéses kiértékelés. Nem látom külön a relatív tájékozás jóság
 
 Jövő héten szerdán valószínűleg nem lesz Géza. Valakit megkér. Másik időpontban
 megtartani. Megy üzenet.
+
+* <2023-09-18 h>
+Kedves Hallgatók!
+
+Az 1. ZH eredményei a következő táblázatban láthatók:
+https://nyme-my.sharepoint.com/:x:/g/personal/kiraly_geza_uni-sopron_hu/ETwKMwpixz9Jtxiz3gC3OO8BQejMKuIT7LiqiOq22DDw5Q?e=kNzclj
+
+A 12 emberből, aki megírta, a számolás csak 3 embernek lett jó (25%).
+
+A kérdésekkel is voltak azért problémák, az alábbiakban szedtem össze a leggyakoribbakat:
+1. 1.1.  Fotogrammetria felosztásai: itt minimum 3 felosztást kellett
+   írni, és nem egyféle felosztásból 3 kategóriát! Valamint "űri"
+   fotogrammetria nincs, csak űr fotogrammetria
+2. 2.2.  Alapvető számolások (Mk, B, A): Sajnos ezzel nagyon sok
+   probléma volt, sokan nem írták fel az alapképletet, volt aki
+   rosszul írta fel az alapképletet, bázisok számolásánál pedig
+   további gondok adódtak. A képi bázis (b'), amit a képen mérünk, és
+   (általában mm-ben határozunk meg, a terepi bázist (B) pedig a
+   "terepen" és m-ben. Sokan összekeverték a kettőt!
+3. 3.2.  Mérőkamerák ismérvei: itt nagyon kevés ember volt, aki teljes
+   választ írt; 1) Belső tájékozás ismerete, 2) Optikai elrajzolás
+   ismerete, 3) Nagy képméret, 4) kiegészítő információk. Az első
+   kettőnél fontos az "ismerete", mert pl. optikai elrajzolása minden
+   kamerának van.
+4. 5.1.  Mesterséges sztereoszkópikus látás feltételei: Itt 3
+   feltételről beszéltünk, röviden: 1) képpár, 2) relatív
+   tájékozás, 3) szétválasztás. Többen írtatok egy negyediket is, hogy
+   ne legyen harántparallaxis a képek között, de pontosan ezt
+   biztosítja a relatív tájékozás.
+5. 6.1.  Analóg fotogrammetria: sajnos itt teljesen jó válasz talán
+   nem is született. Analóg képek analóg módon történő kiértékelése. A
+   vetítési sugarakat optikai és/vagy mechanikai eszközökkel állítjuk
+   vissza, nincs szükség számításokra, a sík- és domborzatrajz
+   grafikusan kiértékelhető.
+6. 8.2.2.  Abszolút tájékozás: Lehet, hogy részemről is jobb lett
+   volna, ha leszűkítem, hogy az "egyképes" vagy a relatív tájékozást
+   követő abszolút tájékozást kérdeztem. Egy kép esetében az abszolút
+   tájékozás teszi lehetővé a fotogrammetriai képi
+   koordináta-rendszerből való áttérést a térbeli (általában EOV)
+   koordináta-rendszerbe. Egy kép esetében 6 külső tájékozási
+   paraméter van: X0, Y0, Z0, omega, fi, kappa. Relatív tájékozást
+   követően az abszolút tájékozás teszi lehetővé a
+   modell-koordináta-rendszerből (ez már térbeli) való áttérést a
+   vetületi koordináta-rendszerbe, ahol 7-paraméteres térbeli
+   hasonlósági transzformációt alkalmazunk (dX, dY, dZ, dOm, dFi,
+   dKappa, m)
+7 9.1.  UAV kategóriák: Ezt a kérdést pár ember teljesen kihagyta, de
+   a többség jól tudta.
+
+A ZH-t 5 pont alatt javítani kell, az SZ betű a számolás javításának szükségességét jelenti!
+
+Jó szerencsét!
+
+Király Géza
