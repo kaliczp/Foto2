@@ -60,7 +60,7 @@ Kiértékelés:
   nem kell számítás. Grafikus kiértékelés
 - Analitikis :: analóg -> digitális. Analóg képekkel, számítással tárgykoordinátákat.
   Műszeerei a mérő mikroszkópok, vagy komparátorok, képi koordinátát mérünk, meghatározunk.
-- digitális. Digitális -> digitális. Analitikushoz közel. Képi
+- Digitális :: Digitális -> digitális. Analitikushoz közel. Képi
   koordináta helyett pixel koordinátákat mérünk, amelyeket képi
   koordinátává alakítunk. Sok lépést automatizálhatóvá tesz. Korábban
   rengeteg emberi munka. Ez akár teljesen automatikus munkafolyamta.
@@ -128,7 +128,7 @@ Képfőpont. Az amelyik a vetítési középpont képsíkra
 eső merőleges vetülete.
 
 Optikai elrajzolás ismerete. Jobb ha külön vesszük a belső
-tájékozástól. Optikai renszer nem teljesen a centrális
+tájékozástól. Optikai rendszer nem teljesen a centrális
 szerint képez. Lyukkamera a tökéletes. Optikán többszörösen
 megtörő fény. Belépő és kilépő sugár szögének különbsége.
 
@@ -914,3 +914,192 @@ A ZH-t 5 pont alatt javítani kell, az SZ betű a számolás javításának szü
 Jó szerencsét!
 
 Király Géza
+
+* <2023-09-25 h> Ortofotó
+** Ortofotó fogalom
+- Ortogonális vetítésű fénykép (ez a készítés, a második)
+- Torzulásoktól mentes fénykép (ez a fontos!) mérethelyes fotótérkép is!
+** Légifénykép torzulásai
+- képdőlés (perspektív torzulás)
+- magassági
+- objektív elrajzolás
+- refrakció
+- földgörbület
+
+Ezeket kell kiküszö bölni.
+
+1 képes sík, a kép dőlés, domborzat inkább két képes, magassági.
+
+Kamera a múlt alkalommal.
+
+Utolsó kettő hatása kisebb. Refrakció szintezésnél jelentős. Kólönböző
+léghőmérsékletű rétegeknél megtörik a fény. Csillog az
+aszfalt. Vízszintes légrétegnél.  Földi fotogammetriánál, vízszintes
+tengelynél lehet jelentőssége. Nem foglalkozunk. Jó időjárási körülmények.
+
+Fölgörbület kis méretarányú légifényképnél. Nem sík a
+felszín. Manapság ritka.
+*** Képdőlés miatti torzulás
+Perspektív torzulás Szabályos négyzetrács dőlt tengellyel.
+Mindkét tengely dől általános négyzög, egy tengely trapéz.
+
+Párhuzamos egyenesek egy pontba, dőlés mértéke meghatározható.
+
+Egyképesnél ez a cél, hogy ezt kiküszöböljük.
+
+*** Magassági torzulás
+Mindig van egy viszonyítási sík. Alatt-fölötte objektumok. Máshová képeződnek.
+Magassági torzulás. Fölötte-alatta az épület.
+
+Nem síkra vetítünk. Ami a magasságot is leírja. DDM-re vetítjük. Ezzel
+a magassági torzulás kiküszöbölve.
+
+** Ortofotó készítés
+- Légifénykép kell egy felvétel, mérőkamera.
+- Tájékozás 6 paraméter. Külső tájékozási paraméterek.
+- Vetítési (viszonyítási) sík meghatározása. Amire visszavetítjük.
+
+** Centrális–ortogonális vetítés
+Vetítési középpont. Centrális vetítésűből ortogonális vetítés.
+
+Valamilyen vetületben készül. Vetület síkjára merőlegesen vetítünk. Minden pontot
+a viszonyítási síkra merőlegesen. Térkép-méret helyes.
+
+** Differenciális képátalakítás
+Analitikus fotogammetria. Ortoprojektor. Hasonló az analóg képtranszformátorokhoz.
+Sztereofotogammetriával magassági vezérlők. Kvázi domborzatmodellje.
+
+Film előtt kis rés, amin át megy a fény. A fotópapírt emelem-süllyesztem a fényképhez.
+A vezérlőnél működik.
+
+Kis rés kell hozzá. Digitális fotogammetria pixelről-pixelre.
+
+Kép ferde, ortofotón a szabályos téglalap.
+
+** Ortorektifikáció
+Tájékozott kép, ismert tájékozási adatokkal. Képterületen kívül eső, kis pixel és nagy pixel.
+Jó áttekintő képhez nagy pixel. Kisebb pixelnek, mint forrás nincs értelme. Nagyobb felbontás nem
+szokott lenni.
+
+Pixel közép x,y koordiánáta. Vetítősugár a képközépig. Síknál levetít.
+
+Több kép domborzat alapján ddm, képsík, pixelt lemásolom. Haonló a differenciálishoz.
+Alapegységenként a kép helyettesíts. Helyükön a pixelek.
+
+A vetítő sugár általában nem a pixel közepét találja el. Négy pixel közés esik a sugár.
+
+** Újramintavételezés vagy resampling
+A pixelekből egy pixel meghatározása.
+
+Három eset:
+- Legközelebbi szomszéd :: értékének másolása. Nearest-neighbour.  Vannak
+  előnyei pl. gyors. egy pixel olvasni. Hátránya, hogy egyenes vonal
+  az eredeti felvételnél lépcsős lesz.
+- Bilineáris :: (bilinear) a pixel négy pixel. Eredeti pixel koordiánáta renszer
+  két szomszédos pixel lineáris interpolálása, majd alatta fölötte
+  lineárisan interpolálok. Négy pixel olvasása. Jellemzően simítja a
+  képet. Másodlagos digitális képeknél erős képi zajt simítja. Simítja
+  az /éleket/ is.
+- Bikubikus :: (cubic convolution) 16 pixelt veszek a
+  környékről. Mindkét irányban 4-4 értékem van. A pixelekre 3-ad fokú
+  függvényt illesztek. Az eredményre (négy sor) Újra illesztek egy
+  függvényt (4 érték) és az oda eső értéket veszem. Képzajt simítja,
+  de az éleket nem. Akár jobban is kiemeli az élt. Általában ezt
+  alkalmazzuk.
+
+Két féle ábra. Bilineárisnál eredmény szempontjából mindegy, hogy
+melyik irányokat használom először. Cubic convulutionnál is
+mindegy. Sebsség egyre csökken, de ma már gyorsak a gépek.
+
+** Vetítési (viszonyítási) sík
+Mire vetítünk?
+
+Síkra. Síkfotogammetriára. Alföldön tgsz feletti síkra. Homlokzaton a falfelület síkjára
+- Sík :: homlokzat, szintsík
+- DDM :: dombozratmodell objektum töve lesz jó helye. Talajszintben jó. Ami kiáll dőlni fog.
+- BFM :: borított felszín modell. Manapság sokszor a TRUE ortofotót
+  készítjük a borított felszín modellre. De van, hogy technológiai
+  akadály. Üvegtetőn keresztül lelátunk. Vagy amit látunk (talaj) vagy
+  a vázszerkezet. Fák esetén is lelátunk. Csak közelítő
+  megoldás. Durva hibák. Ezeknél a konvencionális DDM. Dőlnek az
+  objektumok. Töve a jó helyen. Rossz BFM esetén gondok.
+
+Példa. Épület töve letakarja. Ma már inkább true orto. Képegyeztetés,
+
+** Ortofotó-mozaikolás
+Légifényképezés több 10 100 akár 1000, ahol nem csak egy kép és
+ortofotó, hanem mozaikolni kell.
+
+Sok eljárás:
+- Manuális :: korábban vágóvonalakat rajzoltak. (Seam-line) Hol húzza
+  az ember. Más helyen, hogy ne lehessen látni út mellett, hogy
+  lehessen látni. Szántón, hogy ne zavarjon. Milyen célra készül? Mi
+  az igény?
+- Automatikus :: Ma már automatikusan készülhetnek a vágóvonalak. Az
+  átfedés alapján megadhatom. Kép közepéből mozaikolunk. Kisebb
+  torzulások. Kevésbé dőlő épületek. Aut mozaikolás. Korlátokkal,
+  kézzel is bele lehet nyúlni.
+
+Példák vonalas, út menti vágóvonal. Nem éles vágás. Lehet átfedő zóna.
+Egyik és másik tónus kiegyenlítése. Mindekttő megjelenítve szellemképes.
+Nagyon pontos, nagyobb átmenő zónak Pontatlan ortofotó éles vágás is jó.
+
+*** Színkiegyenlítés
+ER mapper kép. A vágóvonal jól látható. A kis eltérés, szomszédos
+sorok eltérés. Objektum megvilágításában eltérések. BRDF hatás, a
+növény a nap felé. Más színe lesz a területnek. Más irányból a
+napraforgó más színű.
+
+ER Mapper 1 fotó 25 blokk, pixel átlag statisztika. Igyekszik
+igazítani egymáshoz. Próbálja igazítani. Elmehet a statisztika.
+
+Itt fejlesztett eljárás. Szegmensek alapján erdő szegmens. Nem zavar
+be. Szegmens egyeztetés.
+
+Ez lett volna az ortofotó mozaikolás.
+
+** Képegyeztetés
+Sztereo fotogammetria. Amikor az átfedő képeknek egyes részeit
+megpróbálja a szomszédos képekkel egyeztetni. Automatikus mérések.
+
+- Relatív tájékozás :: Ennél is használható. Automatikusa
+- Objektum rekonsturkció :: térbeli mérések a segítségével.
+- Sok egyéb ::
+
+*** Sok eljárás
+Gyorsan fejlődnek, újabb és újabb eljárások. Maguk korlátai.
+
+- Területalapú
+- Objektum :: 
+- Kapcsolat :: 
+
+**** Területalapú
+Minta alablak, mozgó ablak. Kereszt-korrelációval.
+Legkisebb négyzetek elve is jó.
+
+Félelmetes képlet, de nem vészes. 3x3-as ablak.
+eltérés - 9 pixel átlag
+
+Másik ablak is átlagtól való eltérés szrozat összege.
+Átlagos eltérés négyzetösszegével elosztom. Egy-az-egyben a képrészlet.
+
+Ugyan az a képrészlet mások a pixel értékek. Ugyan-úgy egyet ad a kép.
+X,Y pozícióban a korreláció.
+
+***** Legkisebb négyzetek
+Sokszor épülhet a ccf-re. Sokszor nem! pixel értékek különbség.
+
+Geometriai eltérések affin trafóval a legjobb.
+
+- 1983 Ackermann cikk. Ez volt az első.
+- 1988 Grün–Batsavias. multiphoto matching. Nem csak képpárok, tíf
+  fotót egyeztetjük. Nagyobb megbízhatóság.
+- 1988 Helava híres műszere is volt. object space least sq. képsíkon
+  és térben is! Van pro kontra a képsíkon és tárgytérben
+  egyeztetésnek. Z irányban is mozgatni az ablakot. Tér magasabb
+  számítás, jobb eredmény.
+
+Innen folytatjuk.
+
+**** Objektum
+**** Kapcsolat
