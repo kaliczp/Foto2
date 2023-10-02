@@ -1107,16 +1107,6 @@ Innen folytatjuk.
 * <2023-09-27 sze> gyakorlat
 Jövő héten talán a GT-ben leszünk. Jó lenne átmenni. Egy ideig leszünk csak el itt.
 
-
-
-
-
-* <2023-10-02 h>
-** Képegyeztetési eljárások
-
-*** Területalapú
-*** Objektum
-*** Kapcsolat
 Kapcsolópontokkal a relatív tájékozás megvolt.
 
 Raszter menüpont, tömbkiegyenlítés.
@@ -1447,3 +1437,266 @@ Nagyjából jól elhelyezve 1:10 000-ben nagyjából jó
 Akkor jó a kapcsoló pont, ha biztosan azonosítható, de kisebb objektum.
 
 Az első néhányat sikerült megcsinálnom.
+
+* <2023-10-02 h> Képegyeztetés folyt.
+** Képegyeztetési eljárások
+
+*** Területalapú
+Múlt órán volt
+*** Objektum
+Feature-based matching
+
+Bármely eljárással pontokat, vonalakat területeken keresünk, s ezeket próbáljuk egyeztetni a képeken.
+
+Operátorokkal tudjuk detektánlin (kb. szűrő eljárás)
+- Moravec
+- Förstner
+- Haris
+
+Kicsit bonyolultabb, mint egy sima szűrő.
+
+Detektált objektumok azonosítása az átfedő területeken.
+
+**** Förstner
+Förstner (1987) A fast operator for detection and precise location of distinct points, corners and centers of circular featrues. 
+
+Ma is használják és gyors.
+
+
+*** Kapcsolat
+Relation-based matching
+
+Wosselman and Haala (1992) Erkennung topographischer Passpunkte
+
+Pontok kapcsolat alapján.
+
+Wang (1995) A New Method
+
+epipoláris geometriát felhasználja a kapcsolat keresésénél. Geometriai kapcsolatot felhasználva
+találja meg a pontokat. Objektum rekonstrukcióhoz.
+
+Különböző szoftverekben, különböző képegyeztetési eljárások.
+
+*** Mai leggyakoribb
+- Semi-global matching (SGM)
+- Structure from Motion (SfM)
+
+Ezek az aktuálisak, de lehet hogy holnap jön az új és hatékony.
+
+**** Semi-Global Matching
+Hirschmüller (2005 és 2008)
+
+Lokális korreláció az adott ablaknak párja.
+
+Globális képegyeztetés a kép egészét nézi. Sokkal robosztusabb és hatékonyabb,
+de iszonyú számításigényes, lassan futott le.
+
+A lényege sikeresen ötvözi a globális és lokális szereó képegyeztetést, pontos,
+akár pixel szintű eredményeket kisebb száítási igény mellett produkál. Óriási siker volt.
+
+Alapja az optimalizálási feladat költség-funkció alapú. Úttól távol a szálítási költségek
+legalacsonyabb-legmagasabb költségek. Nagyon felgyorsítja az eljárást. Globálisan olyan megoldása
+volt, nem kellett a képre lefuttatni.
+
+Sok cikke jelent meg. Hirschmüller (2005), 2008, 2012, 2013-tól elérhető a Daimler Mercedes autókban.
+Olyan chipek vannak, amelyek hardveresen csinálják. A kocsiban sztereo kamera.
+
+Mercedes vezetéstámogatás 6D-Vision Régóta foglalkoztatta a gépjármű tervezőket.
+Sztereo kamera pár alapján a mélységet lehet látni. Kalibrálást meg kell ismételni időről-időre.
+xilinx FPGAra készített megoldás. Elég-e a 3D? 6D minden időpollanatbn nézik a 3d térképet. Objektumok
+sebesség vektorát próbálják elkapni. Kalmán szűrőt használják ők is.
+
+Sebesség vektort is rögtön becslik. Jellemzően a visszapillantó tükör modulba építik be. 50 km/h-ig
+gyalogos elütés. Dugóban vezetés automatikus. Rossz idő lateral and longitudinal control menettulajdonság hangolása.
+
+2013-ban nagy durranás. Manapság már majdnem minden autóban vezetéstámogató rendszer. Aktív (radar), lézer, passzív
+eljárások. Kettő kegészítés. Esőben lézer, párában optikai... Több szernzor jobb. Ultrahang radar. hosszabb-rövidebb hatótávolságú.
+
+Kis bázis 500 méter mégis. 45 fokos látószög. Éjszaka is alkalmas, írják. Gyalogos osztályozás és merre mozdul.
+2 millió példa az adatbázisban. Online a felhőben és példák alapján tanul.
+
+Még hatékonyabb. Voxelek sztere pixelek = Stixel.
+
+LIDAR összehasonlítása. Veoldine szkenner. 16, 32, 64 fix pászta. körbeforog. Azzal hasonlítják össze.
+Előnye, hátránya. Urban environment.
+
+
+***** Autóiparon kívüli alkalmazások
+Törésvizsgálatokban nagy szerep. Gyors folyamatok, megfelelő detektálás
+Törés teszt jelek nélkül.
+
+Robotika.
+
+Újabb drónoknál ütközés gátlók Obstacle avoidance system. Sztereó kamerák fölfele-lefele.
+Iszonyű nagy fejlődés. Ütközés elkerülő is ilyet használ.
+
+A Mercédesszel kezdődött. Sok autóban ott a tükörnél a sztereo kamera.
+
+**** SfM Structure from Motion
+Régen felfedezett alapelvek, de sokat kellett rajta dolgozni.
+
+Maga a szenzor, ami képet csinál mozgásban van. Ez alapján csinálja a képegyeztetétst. A szenzor elmozdulását is becsli.
+
+- Képsorozat
+- Elmozdulás
+
+Potenciális kapcsolópontok felkeresése a SIFT algoritmussal (Scale Invariant FeaTures) 1999
+
+Durva hibák szűrése RANSC algoritmus (Random Sample Consensus) véletlen mintasorozat, durva hibák
+kombinatoriailag kijönnek.
+
+Egy lépésben meghatározza a szenzor pozícióját és a relatív tájékozását.
+
+Ullman 1979-es cikke az alapja (Interpretation of strucutre from motion.
+
+Förstner (1986) is fontos a megoldáshoz.
+
+Remondino és El-Hakim Image-based 3-D modelling: a review. 2006
+
+Eredeti elképzelés a közösségi médiába feltöltött képek turisztikai látványosság.
+A sok képből a 3D modell pl. Tűztoronyra megcsinálható. Meg kellett oldani, hogy a
+kameraparaméterek általában ismeretlenek. Olyan kamerák alapján 3D rekonstrukció,
+amelyek behoznak egy csomó ismeretlent!
+
+Snavely 2008 továbbfejlesztette. Scene reconstruciton and visualization from Internet photo
+
+Volt microsoft 3D modellező is.
+
+Verhoeven, Doneus, Briese Vermeulen (2012) Holland és TU Wien.
+Oroszok továbbfejlesztették, de nem dokumentálták rendesen. Ők segítettek
+az oroszoknak és összefoglalták a lépéseket.
+
+Westo by, Brasington, Glasser, Hambrey Reynolds (2012) SfM photogammetry.
+
+Olyan képegyeztetés pixel szintű és nagyon részletes. Jelentősen megváltoztatta a digitális fotogammetriát.
+Ma nem is igazán tudjuk, hogy melyik használja.
+
+Gyakorlaton SfM-el kicsit részletesebben megismerkedünk.
+
+Egyik napról a másikra új eljárások jöhetnek.
+
+** Lézeres letapogatás (Laser Scanning)
+A két pontfelhő eltérő, mint a képegyeztetésből.
+Lézeres letapogatással megismerkedünk. Utána fogjuk igazán összehasonlítani.
+
+*** Aktív érzékelő
+Fontos különbség!
+
+- Nem képalkotók
+  - távmérő
+  - altimeter
+  - scatterometer (szórásmérő
+- Képalkotó
+  - LIDAR
+  - RADAR
+
+**** RADAR Radio Detection and Ranging
+
+- Időjárás független véda kapu esőben is lát.
+- Napszak független
+- \labda = 1-100 cm
+
+**** LIDAR
+Light Detection and Ranging
+
+- Napszakfüggetlen (nem időjárás!!!)
+- \lambda = 400-1700 mm
+
+Ködös időben a vízcseppekről, esőben esőcseppekről verődik vissza.
+
+Mindegy, hogy éjjel vagy nappal, de vannak LIDAR szenzorok, amiket a túl erős napsütés
+befolyásol. Háttérsugárzás.
+
+*** LIDAR
+- Optikai tartományban
+- Távmérések sorozata
+
+Időben elhúzódó és letapogat a képhez
+
+*** Lézeres letapogatás
+Hordozó eszközök:
+- Földi
+  - statikus szkenner, a műszer állványon
+  - külön mobil hordozó eszköz
+- Légi
+- Űr
+
+*** Módszerek
+Különböző eljárások. Időben változnak. Egy eljárás felkapják, jön egy újabb még jobb.
+
+**** Háromszögelés
+Mintázatot vetítenek ki. Sztereó kamerával figyeljük a mintázat paralaxisait
+
+Folyamatos hullám alkalmazása a távolságméréshez. Nem impulzusok.
+Fontos különbség, hogy folyamatos hullám gyorsabb. Sokkal nagyobb
+számolási igényű is! Fázis többértelműség, több utas terjedés itt is zajt ad!
+DE sokkal nagyobb sebesség!
+
+Impulzus alapú > 10 m
+
+Háromszögelés MS Xbox Kinect
+100 ezres kiegészítő a TV tetejére. Földmérési alkalmazás. Olcsó szenzor.
+Játék ipar mennyiség más! 20 millió helyett 100 e Ft.
+
+Ugyan úgy mintázatot vetít ki infravörös fénnyel. Két kamerával figyeli a mintázat
+görbüléseit. Méylség kép valós időben. Mozgás fontos. Kb. 40 cm-es bázis vagy kicsit kisebb.
+
+Játékfejlesztők kaptak SDKt pontfelhőt kivették belőle.
+
+Mintázat kivetítése. Képeket mutatott.
+
+**** Folyamatos hullám
+Majd visszatérünk. Nem volt jó a képlet kivetítése.
+
+**** Impulzus alapú távmérés
+c=3*10^8 m/s
+
+1 m 3.33 ns tesz meg a foton. Nagy felbontású időmérés.
+
+Oda-vissza megy fele kell!
+
+3 ns felbontás kb. fél m! pico sec mérés.
+
+1 mm = 3.33 pico sec
+
+Egy egy impulzus. különböző módon modulált. Téglalap vagy más alakú jelek.
+
+R = 1/2 c * \delta t
+
+Fontos a fázis meghatározása. Hullámhosszon belül tudjam, hogy merre. Hullámhosszon belüli
+távolságok. Kódmérés és fázismérés a nagyobb pontosságért, mint GNSS-ben!
+
+**** Single Photon LiDAR
+Újabb technológiák.
+Egy-egy fotont érzékelünk. Űr lézerszkenner esetén nagyon fontos!
+NASA Miroaltimeter (2001) ISAT2 műholdhoz ezt fejlesztették tovább.
+Több újdonság
+
+**** Geiger Mode LiDAR
+Geiger-Müller számlálóhoz hasonló 
+
+Military, Harris IntelliEarth
+
+Nem forgalmazzák. Meg lehet rendelni, nem forgalmazzák. katonai kitelepülés, de nagyon gyors.
+
+**** Multispektral LIDAR
+3 különböző hullámhosszú laser, Különböző hullámhosszon tudja a reflektanciát.
+
+Zöld, közeli infravörös laser több is lehet! Közvetlen színinformáció. Zöld zöldből jobb a visszaveerés.
+
+Csak részben látható. Hamis színezésre alklamas. Tengerparti területeknél nagy jelentőség. Vízbe bemegy az
+egyik, a másik a felszínről verődik vissza. Vannak gyártók, akik ilyenre rámentek.
+
+Optech cég volt az első.
+
+Mindig is vannak és lesznek új technológiák.
+
+IPHONE 13 pro TIME OF FLIGHT kamera. Be van építve a szenzor a készülékbe.
+Komoly dolgokat 2013 pro kiadástól jelentek meg! Mélységi kamera.
+
+Lehet, hogy lecsökken.
+
+** ZH
+Kinek nem jó a számolás.
+
+Nem akarunk foglalkozni. Még egy ZH az alapfogalmakból lesz. Arra számítani. Számolást 2. zh alkalmával pótolni.
