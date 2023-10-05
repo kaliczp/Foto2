@@ -1366,8 +1366,8 @@ Kamera értékei
 0.0072 felbontás
 Kép pixel méret és felbontás.
 
-(14430 * 0.0072) / 2
-(9420 * 0.0072) / 2
+(14430 * 0.0072) / 2 # 51.948
+(9420 * 0.0072) / 2 # 33.912
 ** Keretjel
 Beállítani a képeknél a kamerát (most utólag csináltuk)
 
@@ -1700,3 +1700,128 @@ Lehet, hogy lecsökken.
 Kinek nem jó a számolás.
 
 Nem akarunk foglalkozni. Még egy ZH az alapfogalmakból lesz. Arra számítani. Számolást 2. zh alkalmával pótolni.
+
+* <2023-10-04 sze> Gyak folytat
+Szenátus miatt sokat késtem.
+
+
+** 1. Ortofotó
+
+** 2. DDM
+
+** 3. kimenet
+Korrigálják az épületet.
+
+Részletmérés
+
+Pontokat vonallal összekötik. Tető struktúrát megrajzolják.
+
+Bal klikk és jobbal lezárom.
+
+Meglévő pontokat, 3d koordinátát tudja.
+
+Kémény vagy másik tető.
+
+Elmenti txt-be. Sok EOV koordináta.
+
+Térképként a másk formátumba, nem szövegfájlba, hanem dxf állományba. 19910061tmKalicz.dxf
+Ezt a dxf állományt megnézni autocadben.
+
+Rasztertranszformáció megy közben!
+
+Puritán dxf. Nincs benne a fejlécben a terjedelem. Ránagyítva az RK-ra.
+
+3D tető! Az RK mérése alapján! 3D adatok.
+
+** Összegzés
+Korábban ez volt a kiértékelés lényege.
+
+Sztereo szemüveggel nézték. Mi változott és mi nem az adott területen?
+
+** Elsődleges képek
+Még a tájékozás nincs befejezve. UltraCamX keretjelek a sarokban.
+
+Illesztőpont nem volt, csak kapcsolópontok.
+Dupla klikkel a három képet.
+
+BazsóKalicz-t folytattam.
+
+*** Illesztőpontok
+3 kép 5 illesztő pont. Sarokra és középre.
+
+Ctrl-el automatikusan ip
+
+DDM10 betöltve. Nem kell külön z koordináta.
+
+3 kép és egy térkép
+
+*** IP mérés
+
+Lerakosgatjuk. Mivel lehet arréb rakni. Jobb gombbal.
+
+Magas hiba.
+
+Tervezés a szélső kép nagyon el van ferdülve.
+
+Ha gond új illesztőpontot letenni. Mennyire jó?
+
+Z koordináták jól illeszkednek.
+\kappa-val nem kell foglalkozni.
+
+points és lines mindig fölülírva. Térképnézeten hogyan néznek ki?
+Újból be kell importálni. Ugyan úgy mint a másiknál.
+
+points2008 névvel máshogy!
+
+Képkeretet 23*23-ast írja ki. Igen nagy. Nem jók!
+
+Trafó 20%, így óra végére sem lesz meg!
+
+*** Elsődleges kép méricskélés
+Bázis magasság viszony. Két képközéppont távolsága
+1885 m a képközéppontok távolsága. Bázis/magasság viszony.
+
+*** Kettő összehasonlítása
+**** Elsődleges
+Bázis = 1885 m
+H = 7110 m
+
+B/H = 0,265
+
+**** Másodlagos
+B = 2600 m
+H = 4630 m
+
+B/H = 0.562
+
+Több mint duplája. Bázis magasság viszony.
+
+Térbeli mérések vonalai nagyobb szögben metszik egymást.
+Nagyobb bázis magasság viszony pontosabb magasság mérés.
+Szomszédos képek között nagyobb eltérés.
+
+DE a képegyeztető eljárások a kisebbnél jobban működnek.
+
+Katonák iszonyú nagy látoszög. Szinte derékszög. De képegyeztetés nem megy.
+
+Még a 3. szomszéd is mérhető. Sokat csattogtantunk.
+
+Közbe leállt.
+**** Úra 2008.
+Másik részletmérését betöltjük.
+
+Elsődlegesbe betölteni a másodlagost. Szistematikus eltolódás.
+
+** Házi
+Előző félévben választott elsődleges és másodlagos képet folytatni!!!
+
+* Mi-hol
+G:\TopoX program
+M:\Fogo22023\KaliczP átmásoltam a gyakorlat végén.
+
+Raszter/Tömbkiegyenlítés
+
+ECW 3-as. 500 MB-ig ingyenes. ECW compressor. DLL-t is le lehet.
+500 MB-ig ki is írhatod.
+
+KP arréb rak bal gombbal mérésnél.
