@@ -1815,6 +1815,247 @@ Elsődlegesbe betölteni a másodlagost. Szistematikus eltolódás.
 ** Házi
 Előző félévben választott elsődleges és másodlagos képet folytatni!!!
 
+* <2023-10-09 h> Ea.
+Múlt alkalommal lézeres letapogatást kezdtük el.
+
+** Elve
+Távolságmérések nagy frekvenciával. A kibocsátott impulzusokhoz szögek
+és távmérések. Koordináták külső tájékozási adatait ismerjük (GNSS/INS)
+Eredmény 3D pontfelhő. Szögek és távolságok koordináta különbség meghatározhatól.
+
+Koordináta a fentiből. Eredmény 3D pontfelhő.
+
+Time of light szkennerek idő alapon
+
+** Full waveform
+1 kibocsátott impulzus, egy visszaverődés.
+
+Még az egyszerű távmérőknél is benne, hogy legtávolabbi
+vagy legközelebbi távolságot. Gyakori lett az első és utolsó impulzus.
+First/Last.
+
+Utána ahogy halad a technológia 4–6 visszaverődés.
+
+Ebből jött a full Waveform. A teljes visszavert jelet digitalizálja.
+A visszavert jel digitalizálásának sok előnye. Diszkrét visszaverődések.
+
+Előnye: Több információ, infó az adott objektumról.
+
+Nagyon kicsi szöggel kibocsátott impulzus (ez is IFOW). Kúpot világít meg.
+Minél közelebb, annál kisebb (kör = merőlegesről, ellipszis = ferde).
+
+Visszavert jel alakja alapján el lehet különíteni, hogy milyen objektumról
+verődött vissza az impulzust. A 3D pontfelhő struktúrálatlan. Jól jöhet minden
+eltárolt információ!
+
+Így pl lapos/nem-lapos tető elkülönítés. echo vic???
+
+Vannak olyan szkennerek. Digitalizálja, és meghatározza a diszkrét visszaveerődéseket.
+Gauss görbék szuperpozíciója. Ahová illeszti az lesz a távolság számítás alapja.
+
+- konkrét visszaverődést elteszi, s utólag feldolgozza. Komplex esetben sok visszaverődés.
+  nincs völgy a két csúcs között. Több Gauss-görbe egymáson. Sok szkenner esetén megvan,
+  hogy egy impulzusból milyen távolságot tud elkülöníteni.
+- Más szkenner nem rakja ki.
+
+Ma legtöbb a full-waveform-ot használja. Csak akkor, ha komplex a terület.
+
+** Alkalmazási területei
+*** Topográfiai felmérés
+Ez volt az alap. 80-as években jelentek meg, de nem volt pozícionáló és inerciális nav. renszer.
+A pontfelhő nagyon pontatlan lett.
+
+90-es években jelentek meg a már pontosabb szkennerek.
+
+Ma már ebben nincs alternatívája. Olyan részletes adatsor, ami más technológiával nem.
+*** Városi modellezés
+Város modellezése. Széleskörű alkalmazás
+*** Régészet
+Fontos alkalmazás. Nagy előnye a fotogammetriai felmérésekhez képest,
+hogy behatol a növényzetbe. Növényzet alatti felmérés.  Utak, sáncok,
+halomsírok jól látszanak erdő alatt is!
+
+Amíg egy szántón a művelési munka el erodálja a régészeti
+leleteket. Erdő alatt ritkább a művelés. Jobban megőrzi a felszíni
+formákat.
+
+Pár éve egy híres lelőhely dél-amerikában környékét felmérték. Kétszer
+akkora a város, mint gondolták. Növényzet alatt is kimutatta.
+*** Közlekedés
+Vonalas létesítményeknél felmérés, tervezés, bővítés, akár forgalomszámlálásra is!
+Műegyetemen foglalkoztak Magyarországon először!
+*** Erdésezt
+Akár lombos állapotban domborzatmodell. Famagasságot segítségével nagy
+pontossággal mérhetjük.
+
+A topotérképek régi térkép magassági adatainak
+átvételével. Fotogammetriai úton pontosították.  Fenyő alatt nem
+tudtak magasságot mérni. Tényleges domborzat és DDM5 30 m-es eltérés!
+
+Erdészet utolsó visszaverődésből terepmodell meghatározása.
+DDM magyarul a terepfelszínen. Terep magasságot leíró.
+
+Első visszaverődés digitális borított felszínmodell.
+
+A fenti kettőből magasság.
+
+Lombos állományról kevés pont télen a lombról. Nyáron a lombkoronán
+keresztül alig jut le, közöttük jól lelát.
+
+Fenyőnél is azért télen kevesebb a visszaverődés a lombról.
+
+Egyes fák osztályozása.
+
+*** Sok egyéb
+Még sok minden. Sok helyen használják.
+
+Nekünk topográfia az elsődleges.
+
+** Működés
+/Riegl LMS-Z420i/ működése.
+
+Eddigi alkalmazások légi hordozó eszközökre vonatkoztak. A fenti lézer szkenner földi.
+
+(Űr, légi, földi). Földinél mobil vagy statikus! Fontos!
+
+Régi típus. Ez, amit először használtak (2005 vagy 2006). Riegl osztrák cég. Alsó-Ausztriai gyár.
+A top ban (első 3) benne vannak. Ezen keresztül a felmérés.
+
+Elektronika–impulzusok forgó vagy oszcilláló tükör, prizma kerül kibocsátásra. Fej forog, ami
+a vízszintes forgás. Csigavonalat ír le körbe-körbe.
+
+Ez ethernettel kapcsolódott terepi számítógéppel. Ez vezérelte az eszközt. A pontfelhő színezésére
+fényképet használ. Külpontos képek, de közeli objektumoknál gond csak. Ma is van, ahol külpontos kép
+készül. Másik csatoló a fényképezőt köti.
+
+*** Fontos paraméterek
+- Frekvencia : 8kHz (ma már 4MHz)
+- Hatótáv 2–1000m (A maximum az izgalmas ez még ma is jó!) Felület reflektanciájával adják meg, hogy a felület minőségétől. 90 és 10 %-os reflektanciánál.
+- Hullámhossz: NIR – más-más lehet. Általában a közeli infravörös (NIR) ebben is több hullámhossz. Van vörös (mint egyszerű távmérőben, és van zöld is).
+- Lézer divergenciája: 0.25 mrad vagy 25 mm/ 100m – Amivel megvilágítja a szöget
+- Szögfelbontás: 0.0025/0.002 fok
+- Szögtartomány: 360fok/80fok A teljes gömböt szkennelni képes.
+- pontosság 10 mm
+- súly 14.5 kg
+
+*** Minta szkennelés
+Bemutatta a 3D pontfelhőt. Fa árnyéka, ahol nincs információ. Nap árnyéka is a színezésben!
+A lézer visszaveerődik a vékony ágról, de a kép már nem látja. Vagy a szél elfújja az ágat.
+
+Gyakorlaton majd látjuk, hogy metrikus és pontos felhő. Bármely két pont és a kettő távolsága mérhető.
+NEM STRUKTÚRÁLT! nem tudja a pontfelhő, hogy mi-micsoda. Fontos lépés, hogy leválogassuk a tereppontokat,
+utána elkülönítjük a tereptárgyakat, majd tovább modellezzük a fákat. Pontfelhő, de jelentős feldolgozás után
+lesz belőle modell.
+
+Leválogat, szeletekre idomokat, objetum, utána az objektumról doglozunk.
+
+** Légi szkenner
+TopoSys cég Falcon II. szkenner
+- Hatótáv 1600 m
+- Távolság felbontása 1.95 cm Stopper óra milyen időközönként mér.
+- Kesteny pászta 14 .3 fok
+- Letapogatás frekvenciája 653 H7
+- Lézer freq 83 000 Hz
+- Hullámhossz 1560 nm
+- Adatrögzítés: First és Last és Intensity: visszaverődő jel erőssége.
+
+Különleges elrendezés tükör pálmalevél szerű üvegszálas optikába irányítsuk. És mozgatták.
+Referencia jel (duplex jel) közvetlenül visszavezetik a jelet a detektorba.
+
+Két átfedő repülési sáv. Szinuszok egymáson pontokból. Szakadás benne. Szabálytalan pontokból
+szabályos modelleket. Mo. első letapogatás. Sarród 17 km^2 100 mio pont 6 pont/m^2
+
+2004-ben nagy kihívás volt.
+
+First/last ból modell. Utolsó visszaveerődés visszajut. Első közbeszerzés nem lett sikeres,
+de augusztusban is jelentősen megvoltak a tereppontok.
+
+Pontosság: vsz jobb mint 0.5, magassgái 15 cm
+
+Ma is kb ennek lehet hinni. Precíz műszer 20 cm!
+
+Magassági jobb, mint vsz-es!
+
+Párhuzamos GNNS mérés! Saját bázis! Autó és pont kijön.
+
+** Űr szkennelések
+ICESat volt az első. 
+
+Jég-, felhő és föld-magasság mérő műhold. Globális modellben a sarki
+jégtakaró mennyiségének meghatározása.
+2003–2009-ig ment.
+
+EOS program része volt.
+
+590 km magasan keringett! Távolságmérés!
+94 inklináció.
+
+Közel kör alakú fagyott pálya.
+
+Évente 2* ugyan azon a pályán mért. Profilok mentén. 15 km egyenlítőn (magyar 9 km!)
+
+Szenzor GLAS Geoscience Laser Altimeter System
+
+Két frekvenciás 532 nm 1064 nm
+
+40 Hz
+
+70 m lábnoym 170 m-enként.
+
+Nagy pontosságú GPS és csillagmegfigyelés.
+
+Felhőt is mért, jeget is és szárazföldön is mért.
+
+Pl. Globális erdő magassági térkép!
+
+*** ICESat-2
+Sokat csúszott.
+2018 szept.
+Más lézeres berendezés ATLAS Advanced Topographic Laser Altimeter System
+
+Zöld lézer 532 nm
+
+Pár erős és gyenge lézer dinamikai tartomány növelése. Különböző reflektivitás.
+
+10 kHz
+800 ps stopperrel probléma volt.
+
+Földön Erős és gyengébb 3.3 km, 2.5 km profil mentén! Helyi lejtőt is meg tudják mérni
+Pásztára merőlegesen. Fel és leszálló ág, kereszt vonal.
+
+Sok helyen (Open Altimetry oldla)
+
+Ingyenes letölthető terep és BFM magasság.
+
+*** Copernicus Sentinel-6
+20220 nov 20
+
+Tengerszint változás. Posseidon és Jason küldetések továbbvitele.
+
+1993-óta óceánok 3mm/év emelkedést mutatnak
+
+*** Gedi
+GEDI egy lézeres berendezés. The Global Ecosystem Dynamics Investigation
+A nemzetközi űrállomáson.
+
+25 m a megvilágított, teljes jel alakot rögzít. Ferde pályán van, sarkokat nem
+érzi, de növényzet magassági profiljára jó. Sűrű növényzet több foton.
+
+2018 decembertől. 51.6fok pályahajláls 51.6N. Sarki területek kimaradnak.
+
+GEDI Forest Canopy Height
+
+Eddig az oroszok húzták, de még nincs technológia Elon Musk.
+
+Orosz-Ukrán háború a rakéta technológiában gond. Még amcsikhoz is oroszok
+szállítottak hajtóanyagot.
+
+https://gedi.umd.edu
+
+A fenti három az űr letapogatás.
+
+Jövőre lézeres letapogatás, feldoglozás és pontfelhő összehasonlítás.
+
 * Mi-hol
 G:\TopoX program
 M:\Fogo22023\KaliczP átmásoltam a gyakorlat végén.
