@@ -2056,6 +2056,339 @@ A fenti három az űr letapogatás.
 
 Jövőre lézeres letapogatás, feldoglozás és pontfelhő összehasonlítás.
 
+* <2023-10-11 sze> Gyak
+Gyakorlat elejétől voltam.
+
+TopoXmap nem az ecw, hanem a becsatolt hálózati meghajtót nem látja. Összes
+fájlt érinti!
+
+Saját gépen nem dolgozunk becsatolt hálózati meghajtóval, akkor jó.
+
+Valami van a szoftverrel is, a lassú ortofoto készítés! Jelentős szerepe
+van, hogy egyre lassabbak a hálózati meghajtók.
+
+TopoXmap
+
+D:/fotogr/199 /orto2 mappából a fájl hozzáadva. 1991_0061_1020_orto
+
+A töve van a helyen az objektumnak. Épületek és fák dőlnek! Nem TRUE ortofoto!
+Épületek is dőlnek. tövük jó helyen. Térképezésnél azért jól használható.
+
+** Pontfelhők
+FugroViewer
+
+G:\FugroViewer ingyen elérhető program.
+Évente egyszer meg kell újítani a licencet.
+
+Javasolja, mert kis program, kis hardver igénnyel.
+
+Regisztráció után download, kitöltöm a formot és megkapjuk a letöltési linket.
+Sokszor mintaadatokkal. Utána nem bombáznak levelekkel.
+
+Azért nagyon első szintű.
+G:\dfotogr\botan
+botankert_rgb_2000.laz
+
+Fontos, hogy fotogammetriai pontfelhő!
+
+A mási a lézerszkenneres.
+
+** Fogogammetriai pontfelhő
+Képegyezttésből összeállított. Itt INPHO nevű szoftverrel készültek.
+Moduljai vannak Match-AT
+
+2000 év országos légifényképezés képeiből készült pontfelhő
+
+File menü -> lidar file info
+*** Fejléc
+Pontfelhő állomány fejléce
+Sok féle formátum.
+Mi ~las~ és ~laz~
+Mindkettő bináris formátum. laz veszteségmentes tömörítést alkalmaz.
+laz 3:1 tömörítési arányt ér el.
+
+Könyvtárak elérhető, amivel írható és olvasható.
+
+laz ASPRS amcsi foto és távérzékelési társaság formátuma. 90-től fejlesztett
+nyílt formátum. Sok változata van.
+
+*** las verziók
+major.minor
+LAS Version: 1.4
+
+PDRF (point data format is fontos): 2
+2-es formátum.
+
+las 1.4 specs ASPRS pdf leírását tartalmazza.
+
+LAStools by rapidlasso
+
+Szkenner típusát is be lehet tenni.
+
+Generáló szoftver.
+
+*** Spec
+las 1.4 spec keresés
+[[file:LAS_1_4_r14.pdf]]
+
+Az összes koordináta. Lépték tényező és eltolás tényező 13. oldal a képlet.
+
+Scale fators 0.001 1mm élesség
+Offset: eltolás és befoglaló koordináták.
+
+Koordináták miatt jobb, ha nem nagy számokat tárolunk.
+
+Record értékek egész értékek. Egész számokat tárol. Skála tényezővel tárol.
+
+4 byte egész, intenzitás 2 byte
+
+Az előadáson beszélt dolgok tárolási pontossága a 22. oldalon
+
+Record Format 2 táblázatban
+
+Itt 1 250 804 pont kicsi! milliárdos is lehet.
+
+Minden első visszaverődés, miver fotogammetriai pontfelhő.
+
+Itt csak a legfontosabb infók vannak.
+
+Befoglaló koordináták.
+
+*** Alapértelmezett nézet
+2D felülnézet.
+
+Színezés ion csoport
+
+Elsők magasság alapján palettával színezett.
+
+Színpontok az osztályozással. Nincs leosztályozva.
+
+Intenzitás ikon nincs kitöltve.
+
+source id. Repülési sávonként megadva.
+
+by file a szelvény alapján.
+
+Utolsó az RGB értéket, ami fotogammetriai felhőnél megjelenik.
+
+*** Mi a helyzet
+Képegyeztetésből származik. Más megvilágítási értékek. Radiometriailag nem tökéletes.
+Belenagyítás az ikonnal.
+
+Settings Point Dispay Size.
+
+A pontok elrendezése nagyjából szabályos. A pixelekből származik.
+
+60 cm pontok. Szabályos elrendezés. Hiányzó pontok, ahol nincs képegyeztetés.
+
+Nem igazodik a koordináta tengelyekhez!
+
+Másik kétféle megjelenítés
+
+*** 3D
+Gomb. jobb-bal klikk és görgetés.
+
+Nem jó a képegyeztetés behorpad, színezés.
+
+2000 év, bázis magasság viszon nem jó képegyeztetés nehéz.
+
+*** Profil
+A harmadik megjelenítés.
+
+Három klikk a két vége és szélesség.
+
+Görgővel eltekerem. Profillal végigmegy. Erősen simított!
+
+Query funkció kérdőjel. Pontonként lekérdezhető. koordináta és visszaverődés.
+B épület hossza. Vonalzóval méréseket mérhetünk. Vonalzó vízszintes távolságot ad.
+
+Magassági csak a query vagy profil.
+
+POI és AOI point of interest, area of interest. Ezt gyártotta a cég, megadta az érdeklődését
+és a cég nézte. Területeket kijeölöl vagy pontot, ami a kommunikációt segíti.
+
+** 2008-as állomány megynitása
+Jobb felbontású 0.4 m!
+
+Digitális kamerával készült. 2007-től már digit. A pontfelhő is jelentősen jobb!
+A kisebb bázis–magasság viszony jobb képegyeztetés, nagyobb pontosság!
+
+Jelentősen lesimított vonal De a púpok azért a tetőn látszódnak. Geometriailag korrekt
+pontfelhő.
+
+File info 2m215e pont!
+
+** 2012
+Nagyobb fájlméret!
+
+3m16
+
+Barnulnak a vadgesztenyék, őszi felvétel.
+
+** Botankert ALS 2012
+Ez már lézeres pontfelhő.
+
+1.4 és Format 6.
+
+7 visszaverődés!
+
+Riegl szkennerel készült.
+
+Ez ár osztályozott pontfelhő!!! Az osztályozásnak van külön ikonja!
+
+*** Intenzitás
+A lézer intenzitása itt van!
+
+Délről készült!
+
+Víz és üveg (fém) nincs pont, tükrösen visszaverődik, nem jut vissza a szkennerbe!
+
+Nem egyenletesen elosztott pontok! Különböző szkenner, különböző mintázat.
+
+Két repülési sáv átfedő!
+
+Visszaverődés is van. Profil!
+
+Felső pontok pirosak, a fák alatt mindenféle.
+
+Jelentősen eltér a fotogammetriai pontfelhőtől. Minden éles,
+sok lejutott a talajszintre. Meghatározott pontosságú mérések.
+
+RGB nem ad. Nincs olyan képanyag, ami alapján a pontokat színezhetnénk.
+
+*** Réteg hozzáadása
+2012 + és done
+
+Color by file Jól elkülönül. Alapból a lézer pontosabb.
+
+Magassági és vízszintes összehasonlításra jó a profil. Nagyjából együtt a kettő!
+
+*** Gézának elszállt
+OpenGL-t használ, de jól működik.
+
+*** Szünet
+
+*** Osztályozás
+Full waveform szkenner. Mesterséges felületek elkülönítése jó.
+Utak és épületek. Épület külön osztályozása domborzat modellezési lépések.
+
+Pontsűrűsödések. Fix a pilótás repülőn. Nincs gimbal. Billeg a pontfelhő a repülővel.
+Hossz irányban is billeg.
+
+Osztályozás.
+
+ASPRS doksiban classification. 19. olalon
+4 biten az osztályozás!
+
+Standard osztályozási mód. Ma már több bitet használnak. 1-8, 16, 32-re bővült.
+
+0 created, non classified majd!
+
+Ground, low, medium high vegetation, külön building, low point noise! Terep alatti pontok.
+
+Pocsolyáról visszaverődik, majd a fáról. Terepalatti zaj pontok külön osztályba.
+
+Modell key point, ami alapján a terepet osztályozzuk.
+
+Vízfelszín.
+
+Ez az osztályozás a full-wave-form szkennerből kijött. Keskeny a
+mesterséges, széles a természetes.
+
+Display color shaded tin. Szokásos tin modell. Árkot és utak szélét kihozza!
+Utak, ösvények elég jól látszanak. Mikrodomborzati elemek kijönnek! Felső
+botankertben is szépen kijönnek. Síkrajzi térképezés szempontjából is fontos!
+
+TIN és szintvonal készítésre is alkalmas!
+
+*** Referencia térkép hozzáadása
+
+TIFF és shp formátumú térképet lehet hozzáadni.
+
+G:\topo\gk10\*C-c-4
+
+Pontsűrűség.
+
+Bezárjuk a FugroViewert.
+
+** potree
+http://potree.uni-sopron.hu/examples/Botan_tanosveny_SzT.html
+
+dfotogr botan és potree.
+
+térinformatika térbeli indexelés Interneten keresztül több millió pont.
+Hatékony technológia, csak a megjelenítés.
+
+Mérni egyszerűbb eszközök. Nehogy mögötte lévő pontot válassz, érdemes megforgatni.
+
+*** Tools measurement
+Megvizsgálni, hgoy 3D-be ott legyen a pont, ahová szeretnénk.
+
+tls gomb a ligneumnál.
+
+Ég színű ágak.
+
+Épület színezése. Ferde tengelyű kamerának a jelentősége.
+
+utak térképe talaszinten megvan. Másfajta pontfelhő megjelenítés.
+
+2022 márciusi szkennelés!
+
+** lastools
+g:\lastools\
+bin, lastool exe.
+
+Egy simple GUI jelenik meg!
+
+Ezzel kapcsolatban
+
+http://lastools.org
+
+Pontfelhők svájci bicskája. Egy ember fejlesztette ki.
+Martin Lisenburg. laz formátum fejlesztője. Sajátságos hatékony szoftver.
+Pár éve meghalt. Egy csapat viszi tovább, de nem úgy mint Martin.
+
+Előnye, hogy parancssorból batch-ben futtatható. Van egyszerű
+felhasználói felület.
+
+Browser, dupla katt.
+
+Kiírja a parancssoros dolgot, utána eredmény.
+
+*** lasinfo
+
+Tárolt koordináták, intenziták.
+
+Classification...
+
+Részletesebb fejléc információ.
+
+Point density-t is írja
+
+*** lasview
+
+*** laszip
+lasból las és vica verza
+
+1:5 tömörítési arány!
+
+*** Leírás
+laszip teljesen ingyenes modul
+lasinfo, amivel las,laz fájl fejlécét nézem.
+lasview ingyenes.
+
+Összes modul saját nevű
+
+van mellette txt fájl.
+
+Van sok alternatívája, amikor díjazták, akkor egyedi volt.
+Zseniális szoftver volt. Nagy adatmennyiséget hatékonyan tud feldolgozni.
+
+Van qgis toolbox!
+
+** cloudcompare
+Lesz még. Laborban hogyan fog futni?
+
 * Mi-hol
 G:\TopoX program
 M:\Fogo22023\KaliczP átmásoltam a gyakorlat végén.
