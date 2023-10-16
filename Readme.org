@@ -2389,6 +2389,290 @@ Van qgis toolbox!
 ** cloudcompare
 Lesz még. Laborban hogyan fog futni?
 
+* <2023-10-16 h> Lézer feldolg ea
+Lézeres letapogatás feldolgozása áttekintés
+
+Folyamat:
+- Letapogatás -> nyers adatok
+- Modellezés
+  - Tájékozás -> Tájékozott pontfelhő. Direkt tájékozás lehet maga a lézer igényli. A pontosabbhoz külön eljárások.
+  - Szűrések -> tereppontok. Előtte kiszűrjük a zajos pontokat. Amik zajt képeznek. Pontok osztályozása. A tereppontok ebben.
+  - Interpoláció -> DTM tereppontokból, DSM legmagasabb pontokból, nDSM. Ha megvan a domborzatunk, akkor lehet a rajta lévő
+  - objektumokat moellezni -> 3D modellek.
+- Kiértékelés -> Minőségi mutatók. Tájékozás, tereppontok osztályozása, interpoláció és a 3D modellek hibáit értékeljük.
+
+** Korábbi projekt felmérése
+Genesee O-M projekt. A fertő és a hansági főcsatorna mente lett szkennelve.
+Osztrák 100m csatorna. Pufferzóna és vmi alatti területek felvétele.
+
+*** Repülés paraméterei
+Pontsűrűség 4 pont / m^2 (megvalósult 5)
+180 kHz 60 fokos látószög 225m sortáv. 70% átfedés egy sáv 750m széles 650m magasan repült a repülő.
+44m/s a terv. 150 km/h. Pont átmérője 0.32m 32 cm átmérőjű kúpot világiított meg.
+
+Sorok közötti átfedés pontos. Nagy átfedés hatékonyabb. u.a. az objektum több oldalról letapogatva.
+
+*** Megvalósulás képe
+Hanság a hosszabb. abban az irányban történt a repülés. Régen nem a szomszédos sorok ra fordult,
+hanem nagyobb íve. Itt a szomszédos sorokat vették fel. Lézernél beterveznek keresztsávokat.
+
+*** Keresztsévok.
+Sávok relatív tájékozásának bizotsítása. Hurkok az IMU rendszer kalibrálása.
+Amikor visszazár a hurok az IMU-t kalibrálják.
+
+*** Sávok, illesztő felületek
+Sávok külön színvezve. Illesztő felületek mérése. Lehet vízszintes síkot is mérni. A felület normálisának
+irányába jók. Igazából a háztetők a legalkalmasabbak. Ferde sík X,Y és Z ben is mutatja az eltéréseket.
+
+*** Relatív tájékozás
+
+Lehet külön lépésben a relatív tájékozás. A szomszédos sávok átfedő
+területén az eltéréseket vizsgáljuk.  Magassági és vízszintes
+értelemben. Itt is kapcsoló felületeket vizsgálok. Az a jó, ha van
+több irányú tetősík is. Ábra ír.
+
+Relatív tájékozásra OPALS szoftver. Bécsi Műegyetem. Volt relatív
+tájékozási modellje, trajektória (repülési útvonal) nélkül. Repülési
+út, minden időpontban ismerjük a repülő adatait és szögeit. Szögeink IMU adatok stb összesimogatása.
+
+A repülési útvonal modellezése nagyon bonyolult. Az OPALS az útvonal nélkül a kapcsolófelületi síkokat detektálja.
+Azon megnézi az eltérést. Sáővok korrigálása után egyszerű Helmert trafóval eltolás és forgatás.
+
+Egyik sáv, másik sáv. A jól mérhető felületeket kiegyenlíti, úgy tájékozza össze.
+
+*** Kép a sávo eredeti állapotáról.
+Kiegyenlti a sávokat. Általában párban a hiba. Az eljárás igazán épített kornyezetben működik.
+Maradék eltérések. 4 mm-ről az átlagos nullára csökkent. Szórás +- 10 cm belül lett +-20 cm helyett.
+
+Amikor kifejleszették jelentős volt. Napjainkban a pontfelhő előfeldolgozása az IMU függvénye.
+Az IMU gyártója szolgáltat szoftvert, amivel a trajektóriát modellezik. IMU gyártója
+ad szoftvert, amivel a trajektóriát helyre állítják. Az IMU adat sajátos. Sok és kevésbé szabványos.
+GNSS RINEX szabványos. betölthető, de IMU sajátos!
+
+Előfeldolgozással a felhasználónak nem kell foglalkozni, de az ellenőrzéssel igen!!!!!
+Vannak gyatrán feldolgozott pontfelhők.
+
+Trafó nem bonyolult. Távolság a forgatási mátrixszal szorozva és eltoljuk a megfelelő helyre.
+Hol volt a repülő és milyen irányba állt. Térbeli részletmérés Álláspont ismert szögek és távolság ismert.
+
+\omega, \phi és \kappa használt. A repülő nyovonalát ismerjük. Gyakran a repülő renszerében nézzük,
+
+YAW, pitch bukdácsolás, roll az orsózás a repülő szögei. Egymásba átszámolni.
+YAW lehet mágneses és földrajzi! A két forgatott tengelyre az \omega -t és \phi -t. Trajektória esetén
+a yaw, pithc, roll meghatározva.
+
+*** Terpi mérések
+Ideális háztetőt. Smart station állomás. Tetejére a smart
+antenna. Álláspont pozíciója és másik. Két álláspont tájékozva, prizma
+nélküli távméréssel. Ideális a kémény és villámhárító nélkül. Kevésbé zajos.
+
+Sarokpontokat és középpontokat mérik. Háromszög tin modellben. Referencia felületen
+a pontfelhő maradék eltérései. Irányok és jobban reprezentált irányok hibára mutat.
+Eloszlások általában normál. +- 8cm-en volt a pontok jelentős része.
+
+Sík területen csak magassági. Háztetők az ideálisak. Repülési útvonal.
+Pozíció pontok, pozíciók között IMU mérések. 10–20 Hz-es pozíciók. A nyomvonal mentén.
+az IMU 5kHz, Sokkal nagyobb felbontás. Kálmánszűrő a kilógó pontok simítására.
+
+Komoly matek és fizika mögötte. Van szoftver, ami a repülő adatai
+alapján egyenlít. Tudja, hogy mit tud a repülő. Sarkalatos pont
+
+*** DSM
+Borított felszín modell a tájékozott pontfelhőből. Jó áttekités a
+területről. Viszonylag egyszerűbb.  Egy részletet mutat. Fertő
+vize. Sima víz, akkor nem ér vissza a jel Szélárnyékban nem érkezik
+vissza a jel.  Szélcsendes időben a vízről ne érkezik vissza jel, nincs hullám.
+
+Ha van pocsolya, akkor a visszaverődött. Terep alatti zaj! Szélárnyék.
+
+*** DTM
+A digitális domborzat modell (Digital Terrain Model)
+30 km hosszon 3m-t változik a magasság. Mikrodomborzat vízügyi
+szempontból jelentős.
+
+Magassági hibában a sávok megjelnnek. Sávok közepe mélyebben, szélei
+magasabban, ahogy lelát a lézer. Meg lehet próbálni szűrésekkel javítani.
+Simítás kisimította volna a mikrodomborzatot. 150 cm víz elöntene mindent.
+Manapság nincs. Tűl alacsony. A természetnek nem. :-)
+
+Mezőgazdasági területen barázdák. Nádasban a nádaratók csapái.
+Ilyen szintű jelenleg nem. Ikva torkkolatnál látszik a korábbi meder!
+
+Fertőszéli-zsilip. Fölső és alsó oldal jelentős szintkülönbség. Répce
+torkolat. Apró különbségek láthatók. Hagyományos mérésekkel nem lehet
+készíteni. A nádas speciális dolog.
+
+*** Egy nádas sziget
+Sziget, nádas pontok. Vízbe áll a nádas. Sok pont a nádról. Vízről
+nincs pont, sok pont föntről.
+
+** Interpolációk
+DSM borított felszínmodellel kezdünk. Az szokott egyszerűbb lenni.
+Jellemzően a legmagasabb pontokat használjuk. Mi van, ha repül egy madár?
+Vannak zajok. Madárraj berepül. Ki kell szűrni. Különböző módszerek vannak.
+
+Percentiliseket használjuk. 99%-át vesszük. A legfelső 1-2% kiszűrve.
+Föső zajok ebből.
+
+DSM:
+- Legmagasabb pontokon megy
+- Tartalmaz:
+  - Épületet
+  - Növényt
+  - közlekedési eszközt, stb.
+
+Nem egy típusú objektumról. Nem osztályozzuk. Heterogén
+kategória. Pont szűrés és interpoláció.
+
+Geoinfó II. és topográfiából voltak.
+
+DSM interpolációk:
+- Snap grid :: rasztercella az ottani pont magasságát kapja. Egy pont /
+  cella. Úgy ritkítunk, hgoy 1x1-es raszter a legmagasabb pont. Hatékonny.
+- Nearest neighbour :: cellaközéphez legközelebbi szomszéd magassága. 10 pont a cellában.
+  A cella középhez legközelebbi.
+- Delaunay triangulation :: Legmagasabb pontokra szabálytalan
+  háromszög háló, TIN alapján a magasság. TIN raszterizálás.
+- Moving average :: van az 1x1-es cellamáret. 100 pont átlaga a
+  cellában. A cella nagyobb átlagában nézem. 3x3 m átlaga az 1x1-hez simít.
+- Moving planes :: A különbség, hogy amíg a moving planes síkot
+  határoz meg, annak veszi a magasságát. average csak magasság.
+- Robust moving planes :: kiszűrjük a síkból elszállt pontokat. Több
+  kör, sík illesztés, távoliakat kihagyjuk, utána újra illesztünk a
+  maradékot.
+- Moving paraboloid :: A síkot x és y irányba illesztett
+  egyenesekből. A paraboloid esetében 3-ad fokú görbék x,y irányba és
+  az alapján határozunk be.
+
+Múltkor a raszterizálás párosítható azzal bikubikus és társai.
+
+Az OPALSban nem működött a moving parabolid. Fáknál a harmad fokú
+függvény illesztése ment. Brolly Gábor a parabolát leprogramozta.
+
+Harmadfokú felületek csúcsok, völgyek és nyergek.
+
+Erdőben:
+- famagasság,
+- egyesfa korona,
+- legyen folytonos.
+
+Tulajdonságai:
+- legmagasabb pontokon
+- Sima a koronán belül
+- lékeknél talajon,
+
+Polinomos interpoláció:
+- approximáció :: interpolációnál átmegy a pontokon, itt csak megközelíti
+- lokális pontszűrés,
+- max másodfokú felület :: parabola, paraboloid.
+
+** DTM
+Magassági felületmodell
+Nyers pontfelhő utána inter poláció
+
+Földi és légi esetében is a legkritikusabb folyamat. Az egész
+pontfelhő feldolgozás legsarkalatosabb pontja.
+
+Négy eljárást különítünk el, de lehetnek hibridek is:
+*** Morfológiai szűrés
+lEGKORÁBBI ELJÁRÁS.
+Minden pontra tölcsérek. Ha nincs benne pont a domborzat modell pontja.
+Két parabola egymásnak és megforgat. A szöge terület típusától függ.
+Milyen alakú a szűrő, amilyen hatékony.
+George Vosselman 2000 Slope base filtering of laser altimetry data
+egyszerű és hatékony.
+
+*** Potnok súlyozása
+Weghting points
+
+Jellemzően illesztünk a pontokra, vagy részletére síkot. A pontok távolságát vizsgáljuk.
+Ha sík fölött, kisebb súllyal, 
+
+Felület, távolság a kezdeti síktól. Távolság arányában súly. Ha megvan, akkor illesztek új felületet.
+Távol kisebb súly, közel nagyobb.
+
+Szép modell, de terep alatti zajokra érzékeny. Jó nagy súly és nem tudja kiejteni.
+
+Kraus, Pfeifer 1998 Determination of trrain models in wooded areas
+
+SCOP++ programba van beépítve. INFO (soproni repülésnél) beépítve. Terep alatti zajra figyelni.
+
+*** progresszív TIN
+Elindulok durva felbontással. Attól függ, hogy milyen területen? Természetes környezetben. Sziklát nem akarok.
+2*3 m-es sziklák. 10*10 m-es terület. 20*20 m legnagyobb pontok, kis épület elfér közötte.
+
+TIN alapján nézem a pontok távolságát a TIN felett. különböző dogokra szűrök, haladok a nagyból a kicsibe.
+
+Szűrések:
+- lejtés
+- szög
+- távolság
+- minimális oldalhossz.
+
+megapoliszban izgi, mert nincs talajpont. Fontos, hgoy milyen pontokból induljunk. Kezdeti lépés túl finom, elrontjuk a modellt.
+
+Természetes környezetben könnyebb. Minimum kezdeti modell.
+
+Pl. A finn Terrasolid szoftver. Beépítve.
+
+LAStools is ismeri.
+
+*** Aktív felületek
+Treesvis szoftverbe németek dolgozták ki először.
+
+Mintha aktív felületi feszültséggel rendelkező. Gumi lepedő transzformáció.
+Gumi lepedő a pontokra. Ahol nagyon megnyúlik. Ahol megnyúlik a súly kisebb lesz. Terptől függő.
+
+Minimális görbület. Szakadés sem tegnap alakult ki. Le van
+símítva. Megynúlt felület kis súly, kihagyja a pontot, a végén sima
+szép felület lesz.
+
+Cloudcompare-ba hasonló beépítve.
+
+CSF (Cloth Simulation Filter) Zhang et al (2016) LIDER data filtering based Cloth simulation.
+
+Itt megfordítjuk a moellt fejjel lefelé. Ráteszünk egy ruha anyagot. A
+kis objektumokba nem megy be a ruha. Az inverre fektetett ruha alapján szűröm a pontokat.
+Aktív felület, de merev anyagot használok.
+
+*** Kódolás
+Iteratív pontkiválasztás. Ezeknél a mószereknél a pontfelhőt oszájozzuk. AFPRS  kód a 2-t kapja
+
+Osztályozott pontok alapján raszteres modellt interpolálhatunk.
+
+Bonyolultabb az eljárás.
+- Morfológiai szűrés :: tölcsére, iteratív több kör
+- Progresszív TIN ::
+- Aktív felületek :: ruha, vagy gumi lepedő.
+
+** nBFM
+Ha felület modell és borított felszín modell megvan.
+
+Borított felszín modell magassága mekkora a domborzat modellhez
+képest. Nem igazi normalizálás, mert egyszerű kivonás.
+
+nDSM = DSM - DTM
+nBFM = BFM - DDM
+
+Mivel minden abszolút magasságban van, nem gond.
+
+nBFM: Olyan borított felszínmodlell, ami a tereből kiemelkeő tárgyak magasságát írja le.
+
+CHM = Canopy Height Modell
+
+Famagasság modellje alapján az erdő által elfoglalt térfogat könnyen számítható.
+
+V fatérfogat
+
+V = F_c * G_c * H
+
+F_c = Koronavetületi alakszám
+G_c = koronavetület 
+H magasság.
+
+Pontfelhő feldolgozás módszerei pontosak. Nem az összes módszer, de
+legalább kettőt meg fogunk nézni. Az egész pontfelhő feldolgozás legfontosabb lépése.
+
 * Mi-hol
 G:\TopoX program
 M:\Fogo22023\KaliczP átmásoltam a gyakorlat végén.
