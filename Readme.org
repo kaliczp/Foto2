@@ -2673,6 +2673,201 @@ H magasság.
 Pontfelhő feldolgozás módszerei pontosak. Nem az összes módszer, de
 legalább kettőt meg fogunk nézni. Az egész pontfelhő feldolgozás legfontosabb lépése.
 
+* <2023-10-18 sze>
+
+** TopoXmap-hoz
+*** Ortofoto generálás
+A transzformációnál a gyorsító tár kB-ban megadandó nem MB-ban.
+Ezért volt lassú a a generálás. Kicsi pufferrel dolgozott. 64 MB-helyett
+64000 -t írni. Gyorsabb lesz a számolás
+
+Legyártotta az ortofotot. g:/dfotogr/19910061/orto
+*** DSM
+Modellek mappából.
+
+Modellek árnyalással és színskálával
+
+Terepmodell/Domborza/Föld sablon Leduplázza a folyamatot, rak rá egy
+színskálát és egy megvilágítást. Jobbn értelmehzetőbb a felületmodell.
+
+Botankert környéke. Az épületk alig kivehetők. Elég durva modell.
+Vágásterületeket jól tudja detektálni a képegyeztetés.
+
+Régi algoritmus azért használható eredmény.
+correlation állomány, melyik területen milyen erős.
+
+H gombbal hisztogram széthúzás. Terület, amit jól tudott korrelálni. Homogén
+területek gyengébb korreláció.
+
+globál orot visszavetített kép. nem úgy dől.
+*** másik
+X:\dfotogr\2008\orto
+
+Három felvételből elkészített ortofoto.
+Feljebb Modellek mappa.
+
+Ez sem tökéletes.
+
+Korrelációs kép. Segít megérteni, ha nem jó a modell vagy elszáll, akkor mi lehet az oka?
+Adott pixel pozícióban a korrelációs együtthat.
+
+Fekete a correlation, de nem volt jó a képegyeztetés.
+Jereván épület, várkerület gyűrűje...
+
+Átfeldő területek É és D részén nen jó a korreláció. Még a másodlagos digitális képekhez
+készült modul. Automatikusan körbevágott kép.
+
+TopoXmap raszter műveleteket tanultak? Nem.
+
+Új térképnézet. Hozzáadni egyik DSM-et.
+
+Nézet beállíításainál átnevezni, új folyamat hozzáadása a másik ablakkal
+
+Rasztr beállítása
+r1-r2
+
+Megnéztük
+
+zöld-fehér-vörös
+Érték tartományt is szimmetrikusanr
+
+A raszter új algoritmussal R1-R2
+
+1991 egyik ortofotóját hozzáadva.
+Bekapcsolt fotó.
+
+
+Kiemelkedő és besüllyedő objektumok között parallaxisok. Máshová képzpdnek.
+Kollégiumok környékére nagyít.
+
+Sztereo ortofoto készítése. Anaglif megjelenítéssel. Könnyű a sztereo ortofotót megcsinálni.
+20-as képet kikapcsolva a vörös sávon.
+
+Ki lehet kapcsolni a vöröset, és hozzáadni a másik fotót a vörös sávnak definiáli.
+
+Balra dől a vörös, akkor jobbra kerül a vörös. Tömbkiegyenlítésnél
+nincs relatív tájékozás. Képpár csak vízszintes bázissal
+működik. Azzal tud dolgozni a szemünk.
+
+*** Mozaikolás
+A két orot fotót egymásra teszem, szegély miatt nem tudom összetenni.
+Raszter -> mozaikolás
+
+Mindent 0-ra állít és létrehoz egy Mozaikot ami létrejött.
+Automatikusan a 464090-ig megjeleníti a képet.
+
+Szabályos téglalapokkal gyors, sok mindent nem igényel.
+
+**** Vágó vonalak
+Amikor nem jó, ha látszik valamit, akkor mozaik réteget hozunk létre.
+Oda berajzoljuk a vágó vonalat.
+
+A mozaik mellé még újra hozzáadom a fotókat.
+A lines fájlt hozzáadni.
+
+A létrehozott lines AtlasBNA esetében a képkörvonalat kiválasztani. Újjal történő kiválsztás.
+Vonal attrib. Atlas2. Duplán Atals2, egyenlő IMAGE. Kifejezéssel választok ki.
+
+Kiválasztott kiírása regio vonal. Térkép -> Kiválasztott elemek -> kiírása
+
+Térkép -> terület -> építés vonalakból
+
+Régióként elmentem.
+
+Le kell osztályozni.
+Egyik területben kattintunk 1019 és 1020
+
+Leosztályoz sorszám alapján.
+
+Mozaik réteg duplázzuk.
+
+1019 mindhárom réteg kitörlöm a kivágást.
+és hozzáadom a régió területet.
+
+Sok kép macerás. Van sok automatikus módszer.
+
+Automatikus vágóvonalakat utólag lehet szerkeszteni.
+
+Pixeleket is átvágja a vágóvonalat. Fejlett a topoxmapnál, hogy nem
+csak elég pixszelekkel dolgozik.
+
+TopXmap vége
+** Szünet
+
+** Agisoft PhotoScan
+Van egy Lens program benne.
+Különálló program
+
+Sakktábla ikon
+Kamera kalibráció biztosítása. Sakktáblát kell lefényképezni több álláspontból.
+Az optika kalibrálását több álláspontból fényképezve lefényképezi.
+
+Autofocus 40 cm-re fókuszált kamera. A kameraállandó autofocussal.
+
+Kivetítő a projektor torzítása, vászon hullámossága. Mindkettő használható.
+
+Akkor jó a kalibrálás, ha a teljes képmezőn pontok vannak. Teljes kép
+legyen sakktáblás.
+
+Géza kivetítette. Kamerával képet hármat.
+
+Minimum hármat fényképezünk.
+
+Add photos
+
+Utának vonalzós gomb. FishEye halszem, mi a Frame-t válasszuk
+(centrális vetítésű).
+
+Piros kék pont detektálás.
+
+reprojection error. .02, 0.94 max 2.8 mutatja, hogy hány pixel maradék
+eltérés a pontokban.
+
+A kalibrált értékeket le lehet menteni. Lens projekt állományba.
+
+Az új verzióban már nem különálló program.
+
+Kalibrálásnál be lehet állítani, hogy mit kalibrálok.
+
+- kameraállandót is lehet csak. De akkor nagy a hiba.
+- cx, cy képfőpont eltolódás a következő.
+- k1, k2, k3 radiális torzítás k1 R^2, R^4, R^6
+- p1, p2 tangenciális elrajzolási paraméterek.
+- Fit aspect nem teljesen négyzetes pixelek megengedése
+- skew nem téglalap a kép területünk
+- k3 nagy szórás
+- k4 további radiális torzítás csökkentée
+
+Gyakran van, hogy a kamerát túlkalibrálják. Egy paraméter jó,
+ha a maradék szórás egy nagyságrenddel kisebb, mint maga az érétk.
+Gyakran előáll a túlkalibrálás.
+
+Két pont között még behullámosítja a javító felületet, helyileg nagyobb hibák!
+
+PhotoScan-ben a nadapi alappont másolatát próbáljuk lemodellezni.
+
+Sugójában high resol.
+Fix lenses preferred. Raw-ba nem kell. Elég a jpeg
+
+Vannak jó ábrák.
+
+Algoritmus neve: Structure from Motion
+
+Mindig úgy, ha a képek nem ugyan arról a helyről készültek.
+Homlokzat és sétálunk a kamerával.
+
+Belső mindig a túl olalra fotózunk.
+
+Isolated object nekünk 4 oldalról ugyan úgy néz ki.
+
+Egyik oldalról kicsit innen, majd kicsit onnak, ne legyenek ismétlődő
+formák. GPS nem kell, de ha van akkor az jó.
+
+Jövő alkalomra legyenek elérhetők a fotók.
+
+** Obeliszk fotózás
+Csináltam 16 képet
+
 * Mi-hol
 G:\TopoX program
 M:\Fogo22023\KaliczP átmásoltam a gyakorlat végén.
