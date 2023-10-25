@@ -2868,6 +2868,15 @@ Jövő alkalomra legyenek elérhetők a fotók.
 ** Obeliszk fotózás
 Csináltam 16 képet
 
+* <2023-10-25 sze>
+Illesztőpont mérés. GNSS műszerrel a csappal szemben balról,
+az óramutató járásával megegyezően, a végén a csúcsát, majd az udvari és
+a obeliszk melletti pontot. Ez utóbbin kétszer, de az első volt a jobb.
+
+Leica P40 az udvari ponton teljes, az obeliszk melletti két sáv.
+
+Leica BLK360 egy teljesz az obeliszknél. Ez utóbbira elállt a csöpörgés.
+
 * Mi-hol
 G:\TopoX program
 M:\Fogo22023\KaliczP átmásoltam a gyakorlat végén.
