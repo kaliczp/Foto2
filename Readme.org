@@ -2877,6 +2877,41 @@ Leica P40 az udvari ponton teljes, az obeliszk melletti két sáv.
 
 Leica BLK360 egy teljesz az obeliszknél. Ez utóbbira elállt a csöpörgés.
 
+* <2023-10-30 h>
+Gyakorlat
+
+M: meghajtó csatolás
+
+Agisoft Photoscan Professional
+
+X:\dfotogr\agisoft EBLDY-
+
+Add Photos
+
+Iponnal gond. Vagy gépen vagy icoloud, vagy ...
+
+Workflow -> Add Photos
+
+Most nincs kalibrálás.
+
+** Kép
+Jobb klikk show info.
+Dupla klikk fölhözza, és bezáható.
+
+Jó lenne a pozíció. Alapból tudja, Új verzió mutatja, hogy hol készült.
+Hogy hol készült, az sokat segít. Nem kell arra számítani, hogy körben vannak a képek.
+Be kellett volna kapcsolni a képeket.
+
+** Aling photos
+Workfol -> Align Photos
+Képegyeztetést csinál
+Relatív és abszolút tájékozás is meg lesz.
+
+5 szint van Hány megapixeles a kamera
+Gyakorlaton Medium-on mennünk.
+
+Másik a pair preselection.
+
 * Mi-hol
 G:\TopoX program
 M:\Fogo22023\KaliczP átmásoltam a gyakorlat végén.
@@ -2887,3 +2922,8 @@ ECW 3-as. 500 MB-ig ingyenes. ECW compressor. DLL-t is le lehet.
 500 MB-ig ki is írhatod.
 
 KP arréb rak bal gombbal mérésnél.
+** Fenti labor
+\\dell-geosrv\munka
+emk-geo is kellett volna bele!
+Csatlakozás különböző hitelesítő adatokkal.
+clabor
