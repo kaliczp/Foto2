@@ -2912,6 +2912,138 @@ Gyakorlaton Medium-on mennünk.
 
 Másik a pair preselection.
 
+* <2023-11-13 h>
+Agisoft Professional
+1.2 vmi nem online licenc, ha nincs hálózat.
+
+** Betöltés
+Workflow -> Add Photos
+Ctrl + A működik.
+
+** Align Photos
+Workflow -> Align Photos
+Ha betöltötte, akkor jön, közelítő és abszolút tájékozás
+
+*** Accuracy
+Accuracy most High, Otthon Highest.
+
+*** Pair Preselection
+Légifényképeken.
+
+A megtalált jellemző pontokat próbálja a képeket párosítani.
+- generic sorbamegy egymás után
+- Reference a légifényképnél a távoliakat nem próbálja párosítani
+  n*n-1/2
+- Advanced
+  - keypoint maximum 40 e-nél nem több Jellegzetes pontok
+  - tie point párosítani tud. Kapcsolópont.
+  - Adaptive camera modell fitting bekapcsolható
+
+*** OK feldolgozás indul
+Matching points.
+
+Sok MP-es kameránál hosszan generálja.
+
+Show Cameras icon mutatja az egyes kamerákat.
+
+Az eredmény a ritka pontfelhő. Sparse point cloud
+
+Workspace és Reference
+Ha be lenne kapcsolva a GPS, akkor mennének a koordináták.
+
+A képnél jobb klikk show info.
+
+Nem elég a helymeghatározás, és rögzíteni kell a helyet a fényképhez.
+Érdemes úgy rögzíteni, hogy tárolja a fotóba az EXIF-be a koordinátát.
+
+Fotókon Show Info, megy.
+
+Workflow -> Align photos highest legtöbb pont, akkor próbálja a legtöbbet.
+Gyenge kamera, nem tudja a pontossági körülményeket meghatározni.
+Gyenge kamera alacsonyabb paraméterrel. Nem lehet egyesével választani
+paramétereket.
+
+** Kép
+duplakatt alul a képen. Megnézni, a view points alapján, hogy hol talált pontot.
+Jó kontrasztos pont.
+
+Key pointok, ami kék tie points.
+
+** A modell
+El van fordulva. GPS illesztő pontok alapján tudja automatikusan helyre tenni.
+Region doboz, ami mozgatható és forgatható, de lehet egy későbbi lépésben.
+
+** GNSS fénykép koordináták átváltása
+Modell átváltása EOV-ba. Workspace.
+Workspace -> Reference -> Convert EPSG23700 alapján EOV. Közelítő trafó.
+Át lehet váltani.
+
+** Mentés
+Kicsi fájl, és azonos nevű mappa, amiben a dolgok.
+
+
+** GNSS által mért koordináták importja
+X:/dfotogr/Nadap2023/foto2003.txt
+Ebben a koordináták. Megadni a vetületet.
+
+Reference fülön első ikon. 8. oszlop a 3D pontosság.
+Yes to all add marker!
+
+Start import at row! A fejlécet lehagyni.
+
+9 pont összesen!
+
+** Terepi jegyzőkönyv
+Melyik volt a marker?
+Legalább két képre feltenni PGup-down ide-oda
+
+5-ös az obelix teteje
+
+Bal alsó a ponszám
+
+Számbillentyűk:
+- 7 fölülnézet
+- 1 elölnézet
+- 3 másik nézet
+- 4 Egyik irány
+- 6 Másik irány
+- 5 gomb perspektív és axonometria
+- 9 sztereomód váltás
+
+** Kamera kalibrálás
+Tool Camera calibration
+
+Átvált pixelbe. Adjusted, amit saját kútfővel optimalizált.
+
+** Kamera optimalizálása
+Vazázspálca Reference fülön.
+
+** Régió
+Szürke doboz a tengelyekkel beállítani
+
+Rotate region ikon.
+
+** Sűrű pontfelhő
+Workflow -> Build Dense Cloud
+High vagy Medium most, mert lassú lehet.
+
+*** Advanced
+Mélységi szűrés. Olyan pontok, amelyek az objektumtól eltér. Moderate.
+
+** Riport
+Le kellene generálni.
+
+** Lépték
+Távolságot meg kell mérni. Az alapján a lépték.
+Két illesztőpont. és Create Scale Bar
+Egyszerűbb tájékozás.
+
+Végig kell csinálni. A verziót oda tudja adni.
+Fellelhetők egyéb verziók is.
+
+** Forrás
+Meg tudja osztani a programot.
+
 * Mi-hol
 G:\TopoX program
 M:\Fogo22023\KaliczP átmásoltam a gyakorlat végén.
@@ -2923,7 +3055,9 @@ ECW 3-as. 500 MB-ig ingyenes. ECW compressor. DLL-t is le lehet.
 
 KP arréb rak bal gombbal mérésnél.
 ** Fenti labor
-\\dell-geosrv\munka
+g: \\emk-geo-dellsrv\geo
+m: \\emk-geo-dellsrv\munka
 emk-geo is kellett volna bele!
 Csatlakozás különböző hitelesítő adatokkal.
 clabor
+
