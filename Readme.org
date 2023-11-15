@@ -3044,6 +3044,384 @@ Fellelhetők egyéb verziók is.
 ** Forrás
 Meg tudja osztani a programot.
 
+* <2023-11-15 sze> Előadás
+NRRC-ben. Késtem.
+
+Teamset nézegetik. Mindenkit a hallgatói email címével adott hozzá.
+Előadásokat feltöltötte Géza.
+
+Hol hagytuk abba?
+
+** BLK360
+Fontos kicsi és könnyű,
+Olcsóbb kategóriából már csak újabb változata van.
+
+*** Szkennelés
+Nem túl jó pontosság (4mm @ 10 m)
+
+830 nm (közeli infra) elég speciális, komolyabb műszer 1500 nm
+
+Látószög 360 fok /300
+40"/40" a felbontás
+
+0.6–60m a hatótávolság
+360 kHz a sebessége
+
+Követekző gyakorlat saját szkenn.
+
+Képalkotás külön körben. 5MP kamerák. LED megvilágítás sötétben.
+30 kép 360 fok x 300 fok
+
+Hőkamera 8-14 um között
+kisebb látószög 10 képből.
+
+Mutatta a képeket. Kis műanyaglencsés kamera, nem olyan jó.
+
+Piros legnagyobb intenzitás, kék a legalacsonyabb, feketéről nincs
+visszaverődés. Ablakról sem jön vissza. Fényes objektumról kérdéses,
+hgoy visszajön-e a lézer. Hőkamera.
+
+A panorámát külön álló képenként, összerakja a letöltött képekből.
+
+** Leica ScanStation P40
+Nagy
+Nehéz 12.25 kg.
+Drágább 25 MFt
+Pontosabb 1.2 mm + 10 ppm
+*** Szkennelés
+1500 nm
+360 fok Hz 290 fok V
+8"/8"
+0.4 mm@10m
+0.4–270m hatótáv
+
+Más képalkotás, központos és négyzetes képek
+
+** Aktuális szkennerek
+- Leica
+- Riegl
+- Faro szomszédos országokban népszerű. A két bemutatott közötti. a Faro Focus sorozat
+
+Link a diában. Összehasonlítás.
+
+** Lézeres letapogatás feldolgozása
+Új diasor.
+
+Fertő repülés tervezése és megvalósulása.
+
+Repülés alapján hogyan történik a lézeres adatok feldolgozása.
+
+Domboraztmodell részletei. Olyan részletek, ami más eljárással nem nagyon volt.
+
+** Interpolálás
+borított felszínmodellel kezdünk Lokálisan legmagasabb pontok, s az
+alapján interpoláljuk a modellt.
+
+Térképezési célra még a mai napig 2.5 D modelleket szeretjük. Egy XY-hoz egy
+magassági érték tartozik.
+
+Borított felszínmodell?
+- épület
+- növény
+- egyéb
+** Interpolációk
+- Snap grid :: pontokból cella
+- Nearest Neighbour :: szomszéd
+- TIN :: delaunay triangulation 3 szög háló és utána
+- Moving average :: átlag a vízszintes sík alapján
+- Moving planes :: ferde sík is lehet. Változatos terepen jobb.
+- Robust moving planes :: Több lépésben illesztett sík. Kilógó pont
+  kicsi súj, Második kör az előzetes sík közeli pontok.
+- Moving paraboloid :: Másodfokú paraméterek
+
+Canopy Height Model paraboloid módszer mindkét irányba lehajló.
+Nyeregfelület ezek segítségével dolgozik az interpoláció.
+
+approximáció van! A kász felület általában nem megy át a felület a pontokon!
+Ha kevés pont, ahol nincs polinom, ott síkot illesztünk.
+
+** Felüoletmodellnél fontos
+Pontfelhőben nincs alapból tematikus információ. Struktúrálatlan adathalmaz.
+
+Nagy kihívás a pontfelhő elemeinek szűrése, osztályozása, és utána interpoláció.
+
+** DDM előállítása
+Sokkal bonyolultabb. Legkritikusabb
+Négy eljárás csoport:
+- Morfológiai szűrés
+- Pontok súlyozása
+- Progresszív TIN
+- Aktív felületek
+
+*** Morfológiai szűrés
+Alakot illesztünk lefordított kúp vagy tölcsér.
+Nem tereppont, mert ott van benne.
+Meredek területen szűkítem, lehet szélesebb.
+
+Meredek terület szűkebb lefelé forduló tölcsért használok.
+Szoftverben sík, dimbes-dombos, meredek hegyvidéki a tölcsér nyílás
+szögét adom meg.
+
+George Vosselman 2000
+
+Finomítottak, de nem változott. Meredek rézsű, változó szögű szűrő.
+
+Régi hatékony
+
+*** Pontok súlyozása
+Elég régi módszer. Kraus 1998
+
+Karl Kraus van egy magyarra fordított könyve. Bécsi Műegyetem prof.
+Norbert Pfeifer az utódja.
+
+robosztus módszer több kör. Összes pontra sík, pontos síktól való távolsága előjelesen.
+Utána súlyfüggvény. Minél lejjebb, annál nagyobb súllyal veszem figyelembe.
+
+Súlyozott pontokra újabb felület, újra kiszámolt távolság és súlyok.
+Egyre finomabb felületek.
+
+SCOP++ programba beépített eljárás. jelenleg az Info szoftver egyik modulja.
+
+Hátránya, hogy a terp alatti zajokra érzékeny. Pocsolya és fakorona fölötte,
+a visszaverődés miatt alatta jelenik meg! Légi lézeresnél nem gyakori, pocsolya,
+de van érzékeny műszer. Zajos pontokat ki kell szűrni előtte, utána alkalmazható.
+
+*** Progresszív TIN
+Nagyból a kicsi felé haladunk. Kisvárosi környezetben mekkora a
+legnagyobb épület, meg kell határozni. 10x10m-es rácsban keresem a
+pontok között a minimumot. Durva TIN, utána ahhoz képest nézem a
+pontok távolságát. Lehet súlyozni, eltérés szög és távolság.
+
+10x10m NRR teteje, bent van, megfelelő minimum pont. 100x100 m nagy csarnok esetében
+gond. Meredek épület kiemelkedik...
+
+Terrasolid programban használják. Régóta a piacon, drága szoftver. Jó.
+
+*** Aktív felületek
+Egyik lehetséges megvalósítás a Treesvis programban.  Nagy felületi
+feszültségű gumi lepedő. Nagy megnyúlás, akkor a következő körben
+kisebb súly, nem illesztem. Sima felületre jutunk.
+
+Nálunk jellemző az erodáltság, sima domborzat. Szikla letörés külön téma.
+Megvan mely pontok jók.
+
+**** CSF
+Cloth Simulation Filter. Merev anyag, aminek van tartása, helyezem az invertált
+felületre. Hatékonyan működik. Cloud Compare szoftverben.
+
+Zhang et al 2016 8(6) 501–
+
+A fenti négy mószer. Legfontosabb eljárások napjainkban.
+
+** nBFM
+Normalizált borított felszín modell a két modell különbsége.
+Domborzathoz viszonyított magasságok. Olyan, ami a terepi objekutmok
+magasságát írja le.
+
+nBFM a kiemelkedő természetes tereptárgyak magassága.
+
+nBFM = BFM - DDM
+
+Alacsony beépítés, középmagas, magass az épület térképezés.
+
+*** Erdészeti felhasználás.
+Famagassághoz! Canopy Height Model CHM is a becsneve.
+
+Térfogat a koronavetületi számmal! Épületeknél is működik, lézeres letapogatásból
+további paraméterek.
+
+** Pontfelhők
+Új diasor.
+
+Pontfelhő: (szabálytalan) térbeli pontok halmaza.
+
+Fotogammetriai pontfelhő 40 cm felbontás pixeles képegyeztetés. Szabályos rácsban,
+de általában szabálytalan.
+
+X, Y és Z koordináták vetületi rendszerben tárolva. További attribútomok.
+
+Nem egy térinfó rendszer, amiben 1 ponthoz sok attrib. Sok pont új mező
++ 100 MB!
+
+Koordináták, de további attribek is tárgyalva.
+
+LIDAR vagy fotogammetriai. Ez a két eljárás, amivel foglalkozt8nk.
+
+Képegyeztetés nem pontfelhő, ott azt mérjük, amire szükségünk van.
+
+** Előállítása
+- Lézeres letapogatás
+- Fotogammetriai alapú képegyeztetés
+
+*** Összehasonlít
+Lézeres:
+- Aktív eljárás
+- Nagyobb felbontás (bár már nem igaz. Képegyeztetésből is lehet nagyon sűrű.)
+- Nagyobb pontosság JELENTŐSEN! nagyobb. Magassági a lézernél
+  jobb. Földinél is. Műszertől függ.
+- Valós időben ahogy dolgozik a szkenner, valós időben is nézhető.
+- Domborzatmodell épületbe nem, de növényzetbe be tud hatolni.
+- Háttérfény nem kell sötétben is használható. Nincs kamerafelvétel,
+  nem tudjuk a pontokat színezni. Erős napsugárzás zavaró.
+- Tükröződés. Üveg, csillár, tükör visszaveri, és a távolság benne. Zajos pont!
+- Drágább. Technológia fejlődik új mélységi kamera az új telefonokba.
+
+Foto:
+- Passzív
+- Szín információ van
+- Textúra infó van
+- Bármilyen léptékben használható FONTOS! Lézernek vannak
+  korlátai. Csak adott tartományban! Ahol nagy távolság kell más
+  eszköz. Lézert a szenzor határozza meg. Fényképezővel közeli tollat
+  és a gleccser végét, űrből. Bármelyik lépték!
+- Utófeldolgozással megy! Letöltöm, sok számítás után kijön az
+  eredmény. Van fejlődés, permetező drón fényképező, lerepülöm, mire
+  vissza ér feldolgozza és az alapján permetez. Sokan
+  felhőszolgáltatással együtt adják a szoftvert. Ott sem valós idő, de
+  gyorsabb. Manapság csökken az ideje.
+- Jelentősen olcsóbb! Persze van drága fényképező. 100 eFt fényképező
+  5–10 MFt szkenner
+- Képegyeztetésnek a homogén felületek nagy kihívás. Ahol nincs
+  jellegzetes feature, nem tudok. Falfelület. Fotogammetriai óton, pl
+  mintázatot vetítek. Lézernél porozzák az üveget, vagy papírt raknak rá.
+- BFM alapvetően ez jön ki fotogammetriai alapon. Ami látszik a
+  felvételeken. Télen is kitakar a vegeteció. Lombtalan téli felvétel
+  is segít.  Laser sem lát át az épületen.
+
+Jelentős különbség a két technológia között a növényzettel borított területen.
+
+Lézeres letapogadtás. Pontfelhőt nézünk, piros pontok ,többi szín.
+
+Ugyan ott fotó. Ngyon sötét zöld.
+
+Egymáson sárga a foto. Pixel szintű egyeztetés, mindig simítás. Nem pixel szinten
+megy, lekerekített felületek. Fotonál minden első visszaverődés.
+
+** Formátumok
+
+Pontfelhő lehet:
+
+- ASCII (*asc, *txt, *xyz...) előnye, hogy minden megeszi, de rengeteg helyet foglal,
+  hatékonyan tömöríthető. Nagy helyigény.
+- Bináris
+  - las (LASer) ASPRS elég elterjedt. Itt szeretik. Elköteleezett
+    hívek. Nyílt formátum, jól dokumentált (ameriaki ASPRS). szabadon
+    használható. Vannak zárt és jogdíjas formátumok.
+  - fls (Faro) nem nyílt, de doksija elérhető
+  - pcd (Point Cloud Library)
+  - stb.
+- Hibrid
+  - E57 lehet pontfelhő, bineris, ascii, fotó is mehet belé. Színeznhető.
+  - PLY népszerű
+  - fbx bináris, ascii elemekkel
+
+    
+** LAS
+2002 1.0 váltzat.
+1.4 R13 OGC standard.
+1.4 R14
+Linkek működnek.
+
+Jó a részletes leírás. Néztük.ű
+
+*** Koordináta tárolása
+Fontos alapvetése, hogy az összes koordinátát úgy tárolja, hogy record a léptéktényező
+és eltolással.
+X_{coordinate} = (X_{record}*X_{scale}) + X_{offset}
+Y_{coordinate} = (Y_{record}*Y_{scale}) + Y_{offset}
+Z_{coordinate} = (Z_{record}*Z_{scale}) + Z_{offset}
+
+Egész szám minden. Milyen lépték? Laseres pontfelhőnél 1 cm vagy 1 mm!
+0.001-es lépték.
+
+BLK-náél nem kell a nagy pontosság cm-es, de ha félrelövünk elrontjuk adatainakt.
+
+PDRF 0 pont record format. TÁBLÁZAT Koordináta mellett egyéb attribútumok.
+Intensity rövid egészben tárolva.
+3 biten a return number 0-7-ig tudjuk tárolni! Ez általában elegendő.
+
+Raszteres formátumnál 12 bit dinamikát tud. 16 bit-es mentés. 25%-al több
+helyet foglalunk!
+
+Sok pont, fontos spórolni. Mit mennyi helyen, ezért a 3 bit.
+
+Scan direction flag. 0 vagy 1 1 biten merre repül.
+
+Edge of flight line. szélén már megjelöt pontok, amiket nem hasznunk
+
+osztályozás
+
+SCAN ANGEL
+
+Point Data Record format 3
+
+Különbség RGB színinformációt tud.
+
+GPS time! Minden ponthoz időbélyeg! Mozgó jármű időbélyeg alapján tudom helyreállítom.
+GPS idővel alapvető számolások? Mindig van week number, héten belül 10 ezred sec-en
+belül határozzák meg az adott időbélyeget. ide-oda számolható.
+
+WeekSeconds számolás.
+
+Itt is fontos! Sokszor belefutunk, hogy meg kell csinálni a konverziót.
+
+*** Classification
+PDRF 0–5 estén
+0–31-ig
+
+- 0 :: nyers pontfelhő never classified
+- 1 :: unclassified, amit nem tudunk osztályba sorolni
+- 2 :: Groun fontos, domborzatmodell
+- 3–:: 5 növényzet magasság szerint
+- 6 :: buiding
+- 7 :: low point noise magas zaj nem gond, de ez annál inkább!!!! Domborzat generálás.
+- 8 :: model keypoint azokhoz visszanyúni, hogy mennyire pontos a modell. mért ..
+- 9 :: water
+a többi egyéb.
+
+Újabb pdrf 6-10
+
+- 13 :: szigetelt wire! sokszor vasúti vezeték távvezeték. magas reflektancia jól kijönnek.
+- 14 :: vezető
+- 17 :: bridge fontos, mert a 2.5 d nem jó rá!
+egyéb újak.
+
+** Pontfelhők illesztése
+Cloud Compare-ben van két pontfelhő, ezeket szeretnénk vizsgálni, két helyi rendszer.
+*** Befoglalók illesztése/Match boundig box
+Pl. termeket lehet így! A fal mindkettő határa a beltéren.
+*** Manuális
+Kézzel tengelyek mentén... További illesztési lehetőségek a pontfelhő alapján.
+Nagyjából, utána automatikus.
+*** Illesztőpontokkal
+Ha olyan target, mit gyakon, akkor egyszerű. Nagyon nehéz jellegzetes
+pontot meghatározni. macerás. Ritka pontfelhő, sűrű pontfelhő. sarkok nehéz!
+*** ICP Iterative Closest Points
+Durva illesztés után finomít.
+** Távolságok számítása
+Előtte, utána pontfelhő földmunkához. Távolságokat számolni.
+- felhő-felhő két felhőt megadok
+- lokális modellehzés
+- felhő háló
+- háló háló illesztek mesht
+
+*** felhő-felhő két felhőt megadok
+Két felhő szömszédok
+
+Egy ritka és másik sűrű gond.
+
+Euklídeszi távolság.
+
+*** lokális modellehzés
+3.5 D háromszögelés
+least squar plan
+TIN model alapján köztes pozíció.
+
+*** felhő háló
+*** háló háló illesztek mesht
+
+A modellezések fenti barkácsolhatók tin, stb.
+  
 * Mi-hol
 G:\TopoX program
 M:\Fogo22023\KaliczP átmásoltam a gyakorlat végén.
