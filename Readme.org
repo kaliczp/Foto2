@@ -3421,7 +3421,14 @@ TIN model alapján köztes pozíció.
 *** háló háló illesztek mesht
 
 A modellezések fenti barkácsolhatók tin, stb.
-  
+
+Előadások Teams, fel lehet tenni a teamsen!
+
+A csoporton belül a dokumentumok. General mellett Előadások.
+Áttesz mindent.
+
+Regisztráció a TopoMapX-re megy a honlapról letölthetőre is.
+
 * Mi-hol
 G:\TopoX program
 M:\Fogo22023\KaliczP átmásoltam a gyakorlat végén.
