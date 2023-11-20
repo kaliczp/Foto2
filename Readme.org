@@ -3322,7 +3322,7 @@ Pontfelhő lehet:
 1.4 R14
 Linkek működnek.
 
-Jó a részletes leírás. Néztük.ű
+Jó a részletes leírás. Néztük.
 
 *** Koordináta tárolása
 Fontos alapvetése, hogy az összes koordinátát úgy tárolja, hogy record a léptéktényező
