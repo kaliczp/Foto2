@@ -3429,6 +3429,111 @@ A csoporton belül a dokumentumok. General mellett Előadások.
 
 Regisztráció a TopoMapX-re megy a honlapról letölthetőre is.
 
+* <2023-11-20 h> Gyak
+A multkor elmaradt, hogy az obeliszket meg kellene mérni.
+
+Pontokat teszünk le a jellegzetes helyeken, utána a pontokat összekötjük vonalakkal.
+
+Modellre letenni pontot a Draw Point, Draw Polyline ikonokkal.
+Kijelölni a nyillal, utána mozgatni.
+
+A fix számokkal befordítot használni. Mindig a navigatera vissza!
+
+Tools -> Export -> export shape
+
+** Mesh
+Háló, drótváz készítés
+
+Workflow/Build mash
+Workflow\build mesh
+surface type arbitrary
+Dense cloud, ha megvan.
+
+Medium, hogy hány pontból
+
+többi maradjon.
+
+*** Nézet
+Új ikonok, wireframe shaded ha megjelenik.
+
+** Build texture
+A háromszögeket textúrálja. Ráteszi a háromszögekre a képeket, részletesebb amodell
+Minden alapbeállításon!
+
+Címerek jók lettek.
+
+** Tiled modell
+Nagy terület szétszedése.
+
+** Buid DEM
+Hagyhatjuk az alapbeállításokat.
+
+
+** Orto mosaic
+Ha 2.5 D-be nem fér be, akkor jobb a mesh.
+Egyébkén az ortot, a DEMre, ha térképezés.
+
+Report v2!
+
+Alappontokat ki kell törölni. Befoglalóba beveszi.
+
+Riportot a CurrentView alapján, ha jó.
+
+** Export
+Inkább csináljuk meg az exportokat.
+
+*** Orto
+File->Export orthomosaik
+Export orotmozaik. jpeg, tif png
+Ez a program ha tiffbe mentünt LZW tömörítést használ. Sokan
+nem kezelik. JPEG-et használjuk. Jpeg quleitity.
+
+jpeg quality a fontos, ha jpeget.
+
+jpeg, jpeg quality 90% jó.
+Fontos a jpeget választani.
+NADAP orto néven.
+
+*** DEM
+TIFF xyz
+nodata value alapértelmehzett.
+word fájl nem kell.
+
+bigtiff 2GB mellett.
+
+Nadap DEM!
+
+*** Pontfelhő
+LAZ formátumba!
+Fájl->Export ponints.
+
+Sok formátumot tud!
+
+Nadap_PC néven!
+
+EOV, shift-et beleírja, és all classes!
+
+FUGRO megmutatná. Itt nem tudjuk megnézni.
+
+** qgis
+Jó heylen wan
+Web quick servicde OSM alá
+
+DEM esetében jelrendszer nillshape.
+
+Google satellitát is lehet tenni.
+
+** Javítgatás
+
+Qgis beton alapon mennyit mutat 275m
+
+Geoid unduláció miatt gond!
+
+** Qgisben
+X:\fotogr\nadap2023\foto...txt
+
+Fontos, hogy EOV-ban TEGYE fel field 2 és három és ad, hozzáadtam.
+
 * Mi-hol
 G:\TopoX program
 M:\Fogo22023\KaliczP átmásoltam a gyakorlat végén.
