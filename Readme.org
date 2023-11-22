@@ -3535,6 +3535,275 @@ X:\fotogr\nadap2023\foto...txt
 
 Fontos, hogy EOV-ban TEGYE fel field 2 és három és ad, hozzáadtam.
 
+* <2023-11-22 sze> Előadás
+** Gyakorlathoz
+Befoglalókkal kapcsolatban, kicsit foglalkozunk vele.
+
+Fotogammetria 2. teams csoport.
+
+Jó lenne, ha mindenki kitöltené a kivágatoka. if az lf.
+
+Múlt félévben fogalkoztunk vele.
+
+*** Befoglaló meghatározása másodlagosnál
+Több lehetőség van.
+Első lehetőség egyszerűbb. A felvétel letöltve, a felvétel mellett ott a word file.
+
+Fotogammetriai képi koordináta rendszerbe teszi át. Úgy használtuk.
+Elindítjuk a qgist. Qgisbe a két fájlt behúzzuk (hozzádadjuk).
+Koordináta rendszer EPGS 23700, hogy EOV-ban van. Le lehet
+olvasni a koordinátákat.
+1000-re kerekíteni. Inkább legyen 1 km-el több.
+
+*** Befoglaló meghatározása elsődlegesnél
+Letöltésnél van a kép, de van mellette csv fájl. Külön a kettő, nincs
+mellette word file.
+
+Jó legyen qgisben, legyen mellette word file.
+
+Excelbe ha bemásolom, akkor adatok szövegből oszlopokat kell választani. Ki kell adni
+a mezőelválasztót.
+
+aet külső tájékozási paraméterek. pontosvesszővel tagolt. Csinálni
+kellene. Pont, vessző csere, mindig gondot okoz. Javasolja a
+számformátumot pontra cserélni.
+
+2857_lf_2008-at használja
+
+Om, Phi, Kappa grd 400-as német fokban.
+
+/200 * 180 Van amelyiknél nem új fokban!
+
+Kappa, ha 200 fok körül van, akkor 180 fok körülinek kell lennie. Számolás
+
+Simán behúzva a vetületnél mégsem-et kell választani.
+Qgis3-tól beállítani, hogy nincs vetület. Nincs vetületet bepipálni.
+
+A raszteres adatoknál bal felső sarok az első pixel. Soronként balról jobbra és
+föntről lefelé. Qgis alapból észak keleti tájolást használ, a pixel dél nyugati tájolásúak.
+
+0,0-tól plusz X, mínusz y-ig megy a kép.
+
+Ultracam x a tulajdonságok
+0 14430
+0 -9420
+-ig mennek a koordináták.
+
+A feladatnál a kamera belső tájékozásában a további infók itt.
+Szükséges adatok itt!
+7.2 micronnal beszorozni a teljes méretet.
+
+14430 * 7.2 / 1000
+
+Ha nincs kitöltve, akkor belső tájékozásnál nem változik az adat.
+
+Kamera nulla középen, fele mínusz plusz, fele mínusz plusz.d
+
+Word fájlnál nem foglalkozunk omega, phi-vel!
+Csak affin transzformációt lehet megadni.
+Elforgatom és eltolom és megadom a méretet.
+
+Képfőpont közepe van a táblázatban Xext és Yext.
+Pixeleket a kép közepét beveszem. A képfőpont eltolódást is eltehetm. Itt 0.216 mm
+ami 7.2 um esetén 300 pixel! Figyelembe érdemes venni!
+
+A kép közepe itt följebb lesz a plusz esetén.
+
+0.216/7.2 * 1000 # 30
+30 pixellel följebb a kép tényleges közepe!
+
+Mivel negatív a koordináta csökkentenem kell harminccal
+
+Figyelni kell, mert EOV és kép koordináta renszer különbözik.
+
+Olyan word file, amely alapján a megfeleő koordinátánál a jó eredmény. 90 fok közelítőleg a z
+óra mutató járására fordítani. Tájékozásnál -180 fok megadva.
+
+Forgatás irányával sok probléma szokott lenni.
+
+Nekünk -90 vagy +270 fokos forgatást kell kapnunk!
+A megadott szögértéket (-178-at) vagy levonunk 90-et vagy 270-et hozzáadunk.
+Jobb a pozitív + 270.
+
+Gondolkodni, hogy hogyan kell állni. Csak 90 többszörösei. Általában
+kelet-nyugati vagy észak délig. Az számít, hogy hogyan áll a térképen
+és figyelni, ami a külső tájékozásban hogyan szerepel.
+
+Elsődlegesnél mindig gondolkodni kell. A megadott érték nem mindig önmagában jó.
+
+*** Word fájl
+Négy forgatási elem
+és x és y
+
+r11
+r12
+r21
+r22
+Tx
+Ty
+
+A forgatási mátrix itt nem egység mátrix. Be van szorozva a felbontással!
+Fontos a képnek a terepi felbontása.
+7.2 um a képi pixel (res'), kamera állandó c =100.5 mm, repülési magasság h0 = 7361.716 (Zext)
+tehát a terepi felbontás.
+
+ak (méretarányszám) = h0/c *1000
+1:73250 m
+
+res = res' * ak (res'-ben nem vagyok biztos)
+
+Mindenhol szorzni kell.
+Forgatás szorzva másikkal.
+
+Ki tudja a forgatási mátrix elemeit.
+
+radiánban!
+r11 cos(kappa)
+r12 sin(kappa)
+r21 -sin(kappa)
+r22 cos(kappa)
+
+Egységmátrix a kettő első négyzetösszege egynek kell lenni sin^2+cos^2 = 1
+
+r11 -0.000467 * res
+r12 0.999999 * res
+A fenti az első négy elem.
+
+EOV_Y (ez lesz x) =  px * r11 + py * r12 + tx
+EOV_X = px * r21 + py * r22 + ty
+
+Csak tx, ty ismeretlen
+tx = EOVy - r11 * px - r12 * py
+
+És ez lesz a word file!
+
+FIGYELEM! vesszőt pontra kell cserélni. Elmenteni a kép neve twf
+Jegyzettömbbe: Hogy ne írja oda a txt, be kell tenni idézőjelbe a fájl nevét!!!!
+
+Rossz lett a forgatás, mintha nem is lenne elforgatva.
+
+Elrontva, mert az r22-nek mínusznak kell lenni, mert a pixel koordináta máshogy nő.ű
+
+A másik probléma, hogy az eredeti koordinátával kellett volna számolni!
+r22-höz mínusz előjelet betenni. qgisben eltávolítnai és újra hozzáadni!
+Csak betöltésnél olvassa be.
+
+Forgatási mátrix elrontva.
+
+A koordináta rendszer más irányú a qgisben. Ezt is figyelembe venni.
+
+Tükrözve is van az egész!
+
+A probléma az egyik koordináta mínusz, a másikba plusz és az előjelet cserélni kell.
+-sin nem volt beírva.
+
+A forgatás most óramutató járásával megegyezően. Előjelek nem mindegy!
+
+** A Worfájból
+Betöltjük excelbe a twf-et.
+Pontot vesszőre cseréljük.
+
+Befogalót számolva a forgatás különbözőségei miatt mind a négy sarok koordinátáját
+ki tudom számolni.
+
+Négy sarok pixel koordinátája.
+
+A négy sarokból a wordfájlból
+
+px *r11 + py * r12 + tx
+
+A másik irányban:
+px * r21 + py * r22 + ty
+
+A négy sarok koordinátája. Minimum és kerekítem.
+
+Nem olyan bonyolult. Kifelé kell kerekíteni.
+
+*** Megjegyzés
+Könnyebb a feladatot megcsinálni, ha vannak közelítő tájékozási adatok.
+Centrum txt fájlt. Elsődelges képeknél adottak. Képszám és a külső tájékozási
+adatok sorba.
+
+centrum_v0
+
+Amit a topoxmapba betölteni. Sima fájl, tgoló vessző és tab is
+Képszám és a hat külső tájékozási paraméter. Ez lesz a kiindulási adat!
+Ha elszált, akkor is vissza lehet tölteni az adatot.
+
+A másodlagos képekre
+
+Befoglaló a wordbol. A Wordfájlból. A képfőpontot meghatároztuk. Arra a koordinátára
+kiszámolni, az lesz a centrum XY koordinátája. Amit a magasságmérő mutat, vagy amit
+tavaly. omega, phi 0, kappa a forgatási mátrixból számítható.
+
+A forgatási mátrixból a szöget el kell osztani a kettőt egymással és a tangenssel.
+
+sqrt(cos^2 + sin^2)
+r11 és r12 a felboontás
+
+A forgatási szög
+arctan(sin/cos)
+r12/r11 és fokba átalakítani!
+
+TopoXmap centrum txt fokba várja az az adatokat! Mindegy, hogy hogyan.
+
+Forgatás iránya az elsődlegeseknél érdekes.
+
+Legyártani a fájlt, mert az segít! Kályha, amitől indulhatunk.
+
+Topoxmap kép -> tervezés -> centrum betöltés
+
+Van további próbálkozás! Első oszlopban a kép neve!
+
+Képközép koordinátája és az excelbe betenni.
+
+Fele a szélességnek. Bal oldalon a műszerek, ott azt mondani, hogy 10000
+Abból kiszámolni! Képfőpont koordinátája leolvasható a képről.
+
+** Saját twf
+*** Másodlagos qgisből
+|        | 233000 |        |
+| 761000 |        | 773000 |
+|        | 220000 |        |
+
+*** Elsődleges próbálgatás
+
+|        |   |        |
+| 768000 |   | 773000 |
+
+*** Elsődleges számolgatás
+
+#+BEGIN_SRC R
+  pic3221 <- read.csv("01Feladat/3221_lf_2010_aet.csv")
+  pic3222 <- read.csv("01Feladat/3222_lf_2010_aet.csv")
+  ## Kép
+  ## 17310x11310
+  ## 6um pixel
+  ## c = 100.5 mm
+  ## képfőpong x = 0, y = 0.18 mm
+  ## sensor 103.86x67.86 mm
+
+  aet.to.twf <- function(x) {
+    c_cam <- 100.5 #mm
+    res.v <- 0.006 #mm
+    kappa.deg <- x$Ka_deg + 90
+    kappa.rad <- (kappa.deg / 180) * pi
+    ## Counterclockwise matrix
+    r11 <- cos(kappa.rad)
+    r12 <- -sin(kappa.rad)
+    r21 <- sin(kappa.rad)
+    r22 <- cos(kappa.rad)
+    rotation_matrix <- c(r11, r12, r21, r22)
+    ## Field res
+    ak <- (x$Zext/c_cam)*1000
+    res <- ak * res.v / 1000
+    ## Rotated tx, ty
+    tx <- x$Xext - r11 * 
+  }
+#+END_SRC
+
+** Elmélet
+
 * Mi-hol
 G:\TopoX program
 M:\Fogo22023\KaliczP átmásoltam a gyakorlat végén.
@@ -3551,4 +3820,24 @@ m: \\emk-geo-dellsrv\munka
 emk-geo is kellett volna bele!
 Csatlakozás különböző hitelesítő adatokkal.
 clabor
+
+* Feladat
+** Feladat1
+1. feladat: Digitális sztereofotogrammetria
+Due December 1, 2023 11:59 PM
+Leadandók
+1. A tömbkiegyenlítés állománya: „VezeteknevK_masodlagos.bba” és
+   „VezeteknevK_elsodleges.bba”
+2. A térbeli részletmérés állománya: „VezeteknevK_masodlagos.txt” és
+   „VezeteknevK_masodlagos.dxf” valamint „VezeteknevK_elsodleges.txt”
+   és „VezeteknevK_elsodleges.dxf”
+3. A tájékozási és magassági adatok összevetése
+** Feladat2
+2. feladat: Földi sztereofotogrammetria
+Due December 1, 2023 11:59 PM
+Leadandók
+1. Egy eredeti fényképfelvétel: *.jpg
+2. Az előállított jelentés: „VezeteknevK_Nadap_Report.pdf”
+3. A csap tetejének fénykép alapján meghatározott koordinátája (Estimated)
+4. A kiexportált alakzatok: „VezeteknevK_Nadap.dxf”
 
