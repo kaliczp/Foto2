@@ -3535,7 +3535,7 @@ X:\fotogr\nadap2023\foto...txt
 
 Fontos, hogy EOV-ban TEGYE fel field 2 és három és ad, hozzáadtam.
 
-* <2023-11-22 sze> Előadás
+* <2023-11-22 sze> Előadás, de inkább gyakorlat
 ** Gyakorlathoz
 Befoglalókkal kapcsolatban, kicsit foglalkozunk vele.
 
@@ -3783,23 +3783,36 @@ Abból kiszámolni! Képfőpont koordinátája leolvasható a képről.
   ## képfőpong x = 0, y = 0.18 mm
   ## sensor 103.86x67.86 mm
 
-  aet.to.twf <- function(x) {
+  ## Soruce:
+  ## https://webhelp.esri.com/arcims/9.3/General/topics/author_world_files.htm
+  ## http://www.omg.unb.ca/people/jonnyb/processing/geotiff_tifw_format.html
+
+  aet.to.twf <- function(x, pixx = 17310, pixy = 11310) {
     c_cam <- 100.5 #mm
     res.v <- 0.006 #mm
-    kappa.deg <- x$Ka_deg + 90
+    kappa.deg <- x$Ka_deg - 90
     kappa.rad <- (kappa.deg / 180) * pi
     ## Counterclockwise matrix
     r11 <- cos(kappa.rad)
     r12 <- -sin(kappa.rad)
-    r21 <- sin(kappa.rad)
-    r22 <- cos(kappa.rad)
-    rotation_matrix <- c(r11, r12, r21, r22)
+    r21 <- -sin(kappa.rad)
+    r22 <- -cos(kappa.rad)
+    rotation_matrix <- matrix(c(r11, r12, r21, r22), nrow = 2)
     ## Field res
     ak <- (x$Zext/c_cam)*1000
     res <- ak * res.v / 1000
-    ## Rotated tx, ty
-    tx <- x$Xext - r11 * 
+    rotation_matrix <- rotation_matrix * res
+    ## Translation tx, ty
+    tx <- x$Xext -
+      rotation_matrix[1, 1] * pixx/2 -
+      rotation_matrix[2, 1] * pixy/2
+    ty <- x$Yext -
+      rotation_matrix[1, 2] * pixx/2 -
+      rotation_matrix[2, 2] * pixy/2
+    list(rotation_matrix, tx, ty, c(r11, r12, r21, r22)*res)
   }
+
+  aet.to.twf(pic3222)
 #+END_SRC
 
 ** Elmélet
