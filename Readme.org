@@ -3816,6 +3816,190 @@ Abból kiszámolni! Képfőpont koordinátája leolvasható a képről.
 #+END_SRC
 
 ** Elmélet
+Múlt órán nem volt végül is.
+
+* <2023-11-27 h> FUGROVIEWER CloudCompare
+Legutóbb
+
+** Csap export
+Csap koordinátájával van gond.
+
+Megmértük, de nem kapcsoljuk be
+
+Fent view estimate, source.
+Estimated koordinates-t kell megadni.
+Sourced helyett Estimated kellene.
+
+A koordináták felett az ő általa becsült koordinátára lépni.
+Vágólapra lehet tenni, kiírni a koordinátáka.
+
+** Cloud Compare
+Ingyenes letölthető. Debianban bent van! 2.11.3, a laborban 2.12.0 van fent.
+
+https://cloudcompare.org
+
+Potfelhők összehasonlítása az elsődleges cél.
+
+Más. Download.
+
+Van sztereomegjelenítőhöz. Térben is meg lehet jeelníteni a dolgokat. Sok
+fájltípust támogat.
+
+Fájlok struktúrája DB Tree.
+Tulajdonságokat. RGB alap, egy színnel vagy egyéb mutató alapján. Intensity alapján.
+
+*** Összehasonlítás
+Két pontfelhőt betölteni és megnézni, hogy mennyire egyezik.
+
+Mindekttőt kijelölni.
+
+Tools -> Cloud-cloud distances.
+
+Lehet látni, hogy hogyan számolja a távolságokat.
+Quad treet négy részre osztjuk.
+
+Oct tree nyolc részre osztjuk a kockát, így gyors indexelés lehet a térben.
+
+Approximate distances. Fél cm a maximum! Nagyon jó.
+
+- Háromszög Local modelling különböző pont sűrűségnél.
+- Síkos
+- quadric másodlagos felület
+
+Aminél kiszámoltuk a távolságokat megadhatjuk, hogy mi hogyan jelentísük meg.
+A propertiesben van egy hisztogram, ott tologatott egy piros háromszöget.
+Megnézi, hogy mennyire illeszkedik a pontfelhő. Előtte, utána szkennelésnél milyen
+változások vannak?
+
+Bármelyik pontfelhő esetében a színezéshez olyan paramétert válasszunk, amiből
+egy megjelenítést készíthetünk.
+
+Könnyű és gyors összehasonlítás a színek alapján.
+
+*** Szivárványszínű ikon
+Fönt középen van. Valaminek a hisztogramját mutatja, ami alapján lehet színezni.
+
+Edit menüben a Scalar fields. Hozzá kell adni egy skalár mezőt. Z koordinátát
+választotta. Kiválaszthatjuk, hogy z alapján kiválaszthatnánk a z mezőt,
+de nem akarja megcsinálni. Hisztogramnál sem mutatja.
+
+Valamiért nem adja hozzá. Kivette és betette újra. Z alapján lehet megjeleníteni.
+Nagyobb területet hagyott Milán, így domborzatmodellt tud csinálni.
+
+Pluginok között csf filter.
+
+Van paraméter, de alappal nézzük. Lefutott Scalar filednél. Ground fölment az obelix oldalára.
+
+Plugins -> CSF-nél maradtunk a flatnál.
+
+slope processing, nagyobb objektum, kezdeti minimum pontokat hogyan vegye?
+Nem sikerül lent hagyni a DDM-et.
+
+CSF és a listában mást kellene választani. Teshroldot lejjebb veszi.
+
+Színt nem veszi figyelembe. A talapzat magasságilag a környezetben.
+
+CSF filter jól paraméterezhető, jól használható a modell előállítására.
+A másikon szűkös levágás. Túl szűken vágta le, próbál finomítani.
+
+*** DDM generálás
+
+Ground pointok. Hogyan lesz ddm?
+- vagy mesh
+- vagy interpolációval kitöltjük a lukat.
+
+3x3-as sakktábla fent.
+
+0.2 m-es rasztert szeretnénk. Minimu cell height. Átlagértékkel töltse be.
+
+Mutatja az interpolált rasztert. Mutatta.
+
+Csinálunk Mesh-t is.
+Edit -> Mesh. Dealunay háromszögeléssel. Kitölti a területet.
+Ha megvan akkor két lehetőség van. Kiszámolhatjuk az offground pontok
+magasságát. Cloud-mesh distance kiszámolható.
+
+Előjel helyes távolság? lokális modellezés? akarunk-nem? Normalizált magasságogk.
+
+Groundra mesh és az off-ground pointok távolságát a meshtől.
+
+Export clouths. Akkor az anyagot használjuk groundnak. Off-ground
+pontok távolság alapján színezve. A síkoknál kiugrások a hisztogramon.
+
+*** Normalizált borított felszín modell
+Normalizált borított felszín modellhez le kell raszterizálni.
+
+Minimum-maximum érték változtatható.
+
+Itt a csf osztályozás, raszterizálás és a távolság számítás a két felmérés
+távolsága.
+
+*** Metszetek
+Lehetőség van metszetek készítésére. E
+Crossection nevű eszköz a felső ikonsorba.
+
+Boxom méretét meg tudom határozni. Z irányban 0.1 m-es szeleteket.
+Z irányba léptethető a box az ablak ikonjaival.
+
+Van egy export gomb. Izovonalakat is lehet exportálni. Szeletekre izovonalakat rakott.
+Zajos, vannak alacsonyan izovonalak. Jól működik. Egy-egy szeleten automatikusan
+végig tud menni!
+
+A szeletre tudunk rajzolni. Trace polyline by point picking. A metszeteken elég gyorsan
+lehet az eszközzel rajzolni.
+
+Minden egyes pontfelhőnél 4D mátrix.
+
+*** Transform
+Két pontfelhőt összeilleszt. Egy referencia. és a másik. Látszik a transzformációs
+mátrix.
+
+Az átlóban csupa egyes, akkor nincs forgatás, 7 irányban 22 cm-es eltolás!
+[3,4] elem a Z. Elkészült pontfelhőt a pontfelhő alapján is oda tudjuk transzformálni.
+
+*** Földi lézerszkenneres pontfelhő hozzátájékozása. Mennyire illeszkedik?
+
+A las fájlt is megnyitja. Nagy szkennerrel nagy állomány!
+
+Más eltolási paraméterrel lett beimportálva, mert elment a kettő egymástól.
+El próbálja tolni.
+
+*** Eltolási paraméterek
+Beolvasásnál kell az eltolás
+464500
+262600
+220
+
+Másikat is ugyan ilyen eltolással. Ha egyszerre többet, ugyan azt az eltolást kell
+megadni. Ha egyszerre nyitjuk meg, akkor nincs probléma, de ha nem, akkor problémás.
+
+Previous inputot is lehet választani.
+
+*** Terep a földi szkennelésen
+Flattel mit csinál?
+
+Groundra mesh. Érdemi területet levágni érdemes. Sok külső terület.
+
+Offground points mesh távolságot kiszámolja.
+
+Épületeknél fél méteren meg lehet rajzolni a vonalát.
+
+BLK360 és a nagyszkenner pontfelhő.
+
+Sima fugro viewerrel megnézni. Cloud compare-ben az eltérések számszerűsíthetők.
+Most szerdán nem lesz elmélet.
+
+** ZH
+Jövő hét szerdán zárthelyi az elméletből.
+
+Jövő hét hétfőn átbeszéljük a kérdéseket. Szerdán alapfogalmakból ZH.
+
+** Házi
+
+Feladatok leadási határideje e hét péntek. Exporthoz hozzá kell férni.
+Reportnál maradhatunk a felülnézetnél!
+
+Felülnézetes. Csap koordinátáját külön.
 
 * Mi-hol
 G:\TopoX program
