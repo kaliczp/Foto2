@@ -4001,6 +4001,133 @@ Reportnál maradhatunk a felülnézetnél!
 
 Felülnézetes. Csap koordinátáját külön.
 
+* <2023-11-29 sze> Nem lesz
+
+* <2023-12-04 h> Gyak CloudCompare Fugro Viewer
+TDK-n ki lesz?
+
+Ki adta le a feladatot? Elég sokan.
+
+Előadás mappával mi történt? Nem az Általánosban van.
+
+
+** Fugro
+Nadapi pontfelhő megnyitva.
+
+Három nézet megcsinálása.
+
+Megnyitás saját pontfelhő. Apból fölülnézet. Színezhető a gombokkal. Különböző csaíkokkal.
+3D gombbal új nézet.
+
+Profile tool. 3D gomb mellett, aivel 3D csinálunk. Metszetnél egérrel tologatok.
+Profile toolall
+
+Window -> panelise all.
+
+Infó gomb.
+
+*** Add file
+A második ikonnal lehet további fájlokat hozzáadni. Utánunk jövő.
+
+Cyínnal illeszkedik. 1 cm, két cm eltérés.
+
+Nem találtam, hogy hogyan írja ki. Valami színeket mondott géza.
+
+** CloudCompare
+Batölteni itt is a két fájlt.
+
+A struktúrát nem lehet lementeni. A két pontfelhő távolságát.
+
+Mindkettő kijelölve. Cloud, shifttel. coloud-cloud distance gomb.
+
+Előzetes statisztika a jobb paraméterrrel. Approximate distance.
+
+Ha nincs megadva modell, akkor a legközelebbi
+
+távolság alapján színezni. Távolság és eloszlás.
+Visible a fájl mellett.
+
+Kapcsolgatni. mit mivel?
+Kapcsolagatni
+
+Metszet készítés kocka metsző síkkal.
+
+Metszet mentése.
+
+Rajzoló ikon. Végigkattingat jobb klikk. Utána bezárt. export manually drawed section.
+
+Manuális munka.
+
+Van egy extract point along automatic active sections.
+
+Ment automatikusan. Metszetekkel dolgozunk. Egyszerűen ment.
+
+Beállítani a magasságot.
+
+*** Automata metszegetés
+
+Extract contur
+
+Kimentettünk metszetet a QGIS-be!
+
+Metszet fontos, hogy adott metszetben rajzoljuk meg az adott objektumot!
+
+*** TLS1
+Betöltöttük az X-ről dfotogra TLS1 pontfelhőt.
+
+Lassan olvasta.
+
+Mit tudunk csinálni, ha a pontfelhők el vannak csúszva egymástól.
+
+*** Elcsúszás
+Fölülnézet. TLS-ből kiszeretném vágni a területét.
+Segment olló-val.
+
+Téglalap befoglaló.
+
+Befogaló Kikapcsolahtó Az arésze , ami a pontfelhőn belül van
+
+Újra pont-pont távolságot számolunk.
+
+Approximate distance, számol. Ha megvan a távolság, akkor
+lehet lent látni az eltérést. Aléptéket megváltozstatja, Kis spiros háromszöget hózgálja.
+Jól eltér egymástól. Az egyik tengely mentén jobban, de a másik tengelymentén is.
+
+A kettőt megpróbáljuk egymáshoz igazítani.
+
+Finelly matching.
+
+Eltolási érétkeket kiszámolja.
+
+A mátrixot nézzük. Van lépték tényező, ha méter és lábas állapot van.
+
+Jól mértük az alappontot, TLS nem. Lehetséges ugyan ezen trafóval összes többi pontot transzformáljik.
+A pontfelhő többi tagjára is megcsinálom a transzformációt.
+
+Új metszet a terephez közel. Csak egy metszetet gyártsunk le.
+
+Ha megvan a section, akkor tudjuk nézni. Épület vonala jó megjelni.
+Az egyik ikon a trace polyline by point picking.
+
+Automatikus rajzolással viszonylag gyorsan tudjuk megrajzolni. Félautomatikus rajz.
+
+Exportálta az épületet. Pick pointok megvannak. Külön a pontok és a vonalak is kimennek.
+
+Metszet alapján térképezés a pontfelhő feldolgozás fontos része. Cloud compareben könnyen megvalósítható.
+
+El kell hagyni a termet.
+
+Megfelelő-e az elméleti ZH-t ne a héten írjuk, hanem a jövő héten. Hétfő jobb mindenkinek.
+
+Feladatot be lehet e pótolni a vizsgaidőszakban?
+Megnézi, amit beadtunk. Szorgalmi időszak végéig. Legalább egy beadása legyen. 8-áig küldje be mindenki.
+
+** ZH-t miből írjuk?
+Fönt van? Nincs fönt.
+A fájlokhoz a general csatornába. Üres előadások könyvtár, felteszi az előadásokat és a kérdéseket az alapfogalmakból.
+
+Szerdán tart konzultációt, ha az elmélettel kapcsolatban van kérdés.
+
 * Mi-hol
 G:\TopoX program
 M:\Fogo22023\KaliczP átmásoltam a gyakorlat végén.
@@ -4013,7 +4140,7 @@ ECW 3-as. 500 MB-ig ingyenes. ECW compressor. DLL-t is le lehet.
 KP arréb rak bal gombbal mérésnél.
 ** Fenti labor
 g: \\emk-geo-dellsrv\geo
-m: \\emk-geo-dellsrv\munka
+m: \\emk-geo-dellsrv\munka nrrccad
 emk-geo is kellett volna bele!
 Csatlakozás különböző hitelesítő adatokkal.
 clabor
